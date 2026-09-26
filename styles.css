@@ -171,12 +171,12 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 .hero-bg-img {
   width: 100%;
-  height: 62vh;
-  min-height: 420px;
-  max-height: 640px;
-  object-fit: cover;
-  object-position: center;
+  height: auto; /* Memilih rasio asli gambar */
+  max-height: 500px;
+  object-fit: contain; /* Gambar tidak terpotong sama sekali */
   display: block;
+  margin: 0 auto;
+}
 }
 @media (max-width: 640px) {
   .hero-bg-img { height: 78vh; min-height: 480px; max-height: 560px; }
