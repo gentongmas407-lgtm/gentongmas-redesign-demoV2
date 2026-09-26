@@ -228,6 +228,19 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .trust-item { display: flex; align-items: center; gap: 0.7rem; }
 .trust-item i { color: var(--clay); font-size: 1.15rem; width: 1.4rem; text-align: center; }
 .trust-item span { font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); }
+.benefit-grid {
+  display: grid;
+  gap: 2.25rem 2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 720px) { .benefit-grid { grid-template-columns: repeat(3, 1fr); } }
+.benefit-grid-item { display: flex; gap: 0.9rem; align-items: flex-start; }
+.benefit-grid-item svg { flex-shrink: 0; color: var(--gold-dark); margin-top: 0.15rem; }
+.benefit-grid-item h3 {
+  font-family: var(--font-body); font-size: 0.92rem; font-weight: 700;
+  color: var(--ink); margin: 0 0 0.3rem;
+}
+.benefit-grid-item p { font-size: 0.82rem; color: var(--ink-soft); margin: 0; line-height: 1.45; }
 
 /* -------------------------------------------------- feature icon row */
 .icon-row {
