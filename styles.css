@@ -445,6 +445,13 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 .testi-dots button.active { background: var(--clay);
 }
+.testi-grid { display: grid; gap: 1.75rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 640px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
+.testi-grid-item { margin: 0; }
+.testi-grid-img { aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
+.testi-grid-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.testi-grid-item figcaption { margin-top: 0.6rem; font-size: 0.85rem; color: var(--ink-soft); }
+.testi-grid-item figcaption strong { display: block; color: var(--ink); font-family: var(--font-display); font-size: 0.95rem; }
 .testi-grid {
   display: grid;
   gap: 1.5rem;
