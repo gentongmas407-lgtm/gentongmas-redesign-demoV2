@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pesan Gentong Mas langsung di website, harga lebih hemat dibanding Shopee. Isi form, otomatis terhubung ke WhatsApp.">
+<title>Beli Gentong Mas — Harga Lebih Hemat</title>
+<link rel="icon" type="image/webp" href="gentongmas-images/gentongmas-logo-new.webp">
+<link rel="apple-touch-icon" href="gentongmas-images/gentongmas-logo-new.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-uC5+fh9SYoPfzovfrENvLP3zUVlKZkPRRv0EGkG7AfXmr6oF53m8mc1XikFJrGBVgWST6iM6FeDX3IVXDf5Ugg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="utility-links">
+      <a href="about.html">Tentang Kami</a>
+      <a href="tim-kami.html">Tim Kami</a>
+    </div>
+    <div class="utility-contact">
+      <i class="fa-brands fa-whatsapp"></i>
+      <a href="https://wa.me/6282126238805">0821-2623-8805</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <img src="gentongmas-images/gentongmas-logo-new.webp" alt="Logo Gentong Mas" width="56" height="56">
+      <div>
+        <div class="brand-name">Gentong Mas</div>
+        <div class="brand-tagline">Warisan alam, untuk kesehatan</div>
+      </div>
+    </a>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="wrap">
+    <ul id="menu-items">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="produk.html">Produk</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="testimoni.html">Testimoni</a></li>
+      <li><a href="info-kesehatan.html">Info Kesehatan</a></li>
+    </ul>
+    <a href="beli.html" class="nav-cta" style="background:var(--white);"><i class="fa-solid fa-cart-shopping"></i><span>Beli Gentong Mas</span></a>
+    <button id="menu-btn" class="menu-btn" aria-label="Buka menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <ul>
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="produk.html">Produk</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="testimoni.html">Testimoni</a></li>
+      <li><a href="info-kesehatan.html">Info Kesehatan</a></li>
+      <li><a href="beli.html">Beli Gentong Mas</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <img src="gentongmas-images/testimoni/gentongmas (2).jpg" alt="Beli Gentong Mas">
+  <div class="hero-scrim"></div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <h1>Beli Gentong Mas</h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line">Bandingkan Harga</div>
+      <h2>Lebih hemat kalau beli langsung di web</h2>
+      <p>Harga khusus Rp70.000 berlaku permanen untuk pemesanan lewat form ini. Saat event tertentu (1.1, 12.12, dll), harga bisa lebih murah lagi.</p>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Tempat Beli</th>
+          <th>Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shopee (harga normal)</td>
+          <td class="price">Rp80.000</td>
+        </tr>
+        <tr class="col-web">
+          <td>Website Gentong Mas <span class="badge-save">Hemat Rp10rb</span></td>
+          <td class="price">Rp70.000</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="form-note" style="margin-top:0.75rem;">*Harga event/flash sale (1.1, 12.12, dll) bisa turun hingga Rp60.000&ndash;Rp65.000, info lebih lanjut lewat WhatsApp/Instagram kami.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line">Form Pemesanan</div>
+      <h2>Isi data pengiriman kamu</h2>
+      <p>Setelah klik kirim, WhatsApp akan terbuka otomatis dengan pesan pesanan kamu yang sudah terisi &mdash; tinggal klik kirim di WhatsApp untuk konfirmasi ke tim kami.</p>
+    </div>
+
+    <form class="order-form" id="order-form">
+      <div class="form-row">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" name="nama" required placeholder="Nama penerima">
+      </div>
+      <div class="form-row-2col">
+        <div class="form-row">
+          <label for="telepon">No. HP / WhatsApp</label>
+          <input type="tel" id="telepon" name="telepon" required placeholder="08xxxxxxxxxx">
+        </div>
+        <div class="form-row">
+          <label for="jumlah">Jumlah (pcs)</label>
+          <input type="number" id="jumlah" name="jumlah" min="1" value="1" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="alamat">Alamat Pengiriman (Jalan, RT/RW, Blok)</label>
+        <textarea id="alamat" name="alamat" rows="2" required placeholder="Contoh: Jl. Madrasah No. 11 Blok Wage II RT 017/RW 012"></textarea>
+      </div>
+      <div class="form-row-2col">
+        <div class="form-row">
+          <label for="desa">Desa / Kelurahan</label>
+          <input type="text" id="desa" name="desa" required>
+        </div>
+        <div class="form-row">
+          <label for="kabupaten">Kabupaten / Kota</label>
+          <input type="text" id="kabupaten" name="kabupaten" required>
+        </div>
+      </div>
+      <div class="form-row-2col">
+        <div class="form-row">
+          <label for="kodepos">Kode Pos</label>
+          <input type="text" id="kodepos" name="kodepos" required>
+        </div>
+        <div class="form-row">
+          <label for="ekspedisi">Pilihan Ekspedisi</label>
+          <select id="ekspedisi" name="ekspedisi" required>
+            <option value="">Pilih ekspedisi</option>
+            <option value="JNE">JNE</option>
+            <option value="J&amp;T Express">J&amp;T Express</option>
+            <option value="SiCepat">SiCepat</option>
+            <option value="Anteraja">Anteraja</option>
+            <option value="Pos Indonesia">Pos Indonesia</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="justify-self:flex-start;">
+        <i class="fa-brands fa-whatsapp"></i> Kirim Pesanan via WhatsApp
+      </button>
+      <p class="form-note">Data kamu akan tersimpan dan diproses oleh tim kami. Setelah klik kirim, WhatsApp akan terbuka otomatis di perangkat kamu.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+// ==== KONFIGURASI: isi URL Google Apps Script Web App di sini setelah dibuat ====
+// Panduan setup ada di pesan chat — kosongkan ("") kalau belum siap, form tetap
+// jalan mengarahkan ke WhatsApp meski data belum tersimpan ke Google Sheets.
+const GOOGLE_SHEET_WEBHOOK_URL = "";
+const WHATSAPP_NUMBER = "6282126238805";
+
+document.getElementById("order-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const f = e.target;
+  const data = {
+    nama: f.nama.value.trim(),
+    telepon: f.telepon.value.trim(),
+    jumlah: f.jumlah.value.trim(),
+    alamat: f.alamat.value.trim(),
+    desa: f.desa.value.trim(),
+    kabupaten: f.kabupaten.value.trim(),
+    kodepos: f.kodepos.value.trim(),
+    ekspedisi: f.ekspedisi.value,
+    tanggal: new Date().toLocaleString("id-ID"),
+    harga: "Rp70.000",
+  };
+
+  // Kirim event ke GTM/GA4 kalau dataLayer tersedia (setelah GTM dipasang ulang)
+  if (window.dataLayer) {
+    window.dataLayer.push({ event: "submit_order_form", ...data });
+  }
+
+  // Simpan ke Google Sheets lewat Apps Script Web App (kalau sudah dikonfigurasi)
+  if (GOOGLE_SHEET_WEBHOOK_URL) {
+    fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).catch(() => {});
+  }
+
+  const pesan =
+    "Halo, saya mau pesan Gentong Mas 🙏\n\n" +
+    "Nama Lengkap: " + data.nama + "\n" +
+    "No. Telepon: " + data.telepon + "\n" +
+    "Jumlah: " + data.jumlah + " pcs\n" +
+    "Alamat Pengiriman: " + data.alamat + "\n" +
+    "Desa/Kelurahan: " + data.desa + "\n" +
+    "Kabupaten: " + data.kabupaten + "\n" +
+    "Kode Pos: " + data.kodepos + "\n" +
+    "Ekspedisi: " + data.ekspedisi + "\n\n" +
+    "Harga khusus web: Rp70.000. Mohon diproses ya, terima kasih!";
+
+  const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(pesan);
+  window.open(waUrl, "_blank");
+});
+</script>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="gentongmas-images/gentongmas-logo-new.webp" alt="Logo Gentong Mas" width="52">
+      <p>PT Gentong Mas Jaya Buana</p>
+      <p>&copy; 2025. Seluruh hak cipta dilindungi.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigasi</div>
+      <ul class="footer-links">
+        <li><a href="produk.html">Produk</a></li>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="tim-kami.html">Tim Kami</a></li>
+        <li><a href="testimoni.html">Testimoni</a></li>
+        <li><a href="info-kesehatan.html">Info Kesehatan</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Ikuti Kami</div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/Gentong-Mas-Official/61564176320117/?mibextid=LQQJ4d" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/gentongmas_official" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/6282126238805" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">Made with care in Indonesia</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
