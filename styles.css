@@ -166,16 +166,99 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 /* -------------------------------------------------- hero / slider */
 .hero {
   position: relative;
+  width: 100%; /* Memastikan hero melebar full ke kiri-kanan */
   background: var(--ink);
   overflow: hidden;
 }
 
 .hero-bg-img {
   width: 100%;
-  height: 100%;
+  height: 550px; /* Tinggi disesuaikan untuk desktop */
   object-fit: cover;
   object-position: center;
   display: block;
+}
+
+/* Mempergelap overlay (scrim) agar teks HTML terbaca jelas */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  /* Dibuat lebih gelap dengan opacity lebih tinggi (0.75 s/d 0.90) */
+  background: linear-gradient(
+    90deg, 
+    rgba(15, 30, 25, 0.92) 0%, 
+    rgba(15, 30, 25, 0.75) 50%, 
+    rgba(15, 30, 25, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.hero-copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  padding-block: 2rem;
+}
+
+.hero-eyebrow {
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.3rem;
+}
+
+.hero-copy h1 {
+  color: var(--white);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.2;
+  margin-block: 0.4rem 1rem;
+  /* Shadow tambahan di teks agar semakin kontras */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-copy p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+/* Layout Khusus HP / Mobile */
+@media (max-width: 640px) {
+  .hero-bg-img {
+    height: 100%;
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-scrim {
+    /* Di HP dibuat gelap penuh dari atas sampai bawah */
+    background: rgba(15, 30, 25, 0.88);
+  }
+
+  .hero-copy {
+    position: relative;
+    padding-block: 3rem 2.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Memastikan overlay gelap ada di belakang teks */
