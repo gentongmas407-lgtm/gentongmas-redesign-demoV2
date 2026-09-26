@@ -518,8 +518,10 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .footer-links a:hover { color: var(--white); }
 .footer-social { display: flex; gap: 1rem; }
 .footer-social a {
-  width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
   border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; transition: border-color 0.2s, color 0.2s;
+  color: rgba(255,255,255,0.85);
+  font-size: 1.1rem;
 }
 .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
 .footer-bottom {
