@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let current = 0;
     let timer = null;
 
-    // Preload every slide image up front so switching never waits on the network.
     slides.forEach(slide => {
       const img = slide.querySelector('img');
       if (img && img.getAttribute('loading') !== 'eager') {
@@ -97,6 +96,26 @@ document.addEventListener('DOMContentLoaded', function () {
       const diff = startX - e.changedTouches[0].clientX;
       if (diff > 50) setSlide(current + 1);
       else if (diff < -50) setSlide(current - 1);
+    });
+  }
+
+  // --- FAQ Accordion (Auto Close) ---
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  if (faqQuestions.length > 0) {
+    faqQuestions.forEach((button) => {
+      button.addEventListener('click', () => {
+        const currentItem = button.parentElement;
+
+        // Tutup semua pertanyaan lain
+        document.querySelectorAll('.faq-item').forEach((item) => {
+          if (item !== currentItem) {
+            item.classList.remove('active');
+          }
+        });
+
+        // Buka / tutup pertanyaan yang diklik
+        currentItem.classList.toggle('active');
+      });
     });
   }
 
