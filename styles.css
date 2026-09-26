@@ -536,3 +536,7 @@ a:focus-visible, button:focus-visible {
   html { scroll-behavior: auto; }
   .testi-track, .hero-dots button { transition: none; }
 }
+
+@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
+.footer-cert { display: flex; gap: 0.6rem; margin-top: 1rem; }
+.footer-cert img { height: 34px; width: auto; background: var(--white); padding: 4px 6px; border-radius: 4px; }
