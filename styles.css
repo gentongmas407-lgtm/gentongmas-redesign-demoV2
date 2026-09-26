@@ -170,6 +170,82 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   overflow: hidden;
 }
 
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Memastikan overlay gelap ada di belakang teks */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(21, 42, 37, 0.5) 0%, rgba(21, 42, 37, 0.85) 100%);
+  z-index: 1;
+}
+
+/* Layout Desktop (Layar Lebar) */
+@media (min-width: 641px) {
+  .hero-bg-img {
+    height: 520px; /* Tinggi banner di komputer */
+  }
+
+  .hero-copy {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding-block: 2rem;
+  }
+}
+
+/* Layout Mobile (Layar HP) - Solusi Gambar & Teks Terpotong */
+@media (max-width: 640px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    height: 100%; /* Gambar mengikuti tinggi container hero */
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+    padding-block: 3rem 2.5rem; /* Memberi ruang atas dan bawah yang cukup */
+  }
+
+  .hero-copy h1 {
+    font-size: 1.5rem !important; /* Ukuran judul disesuaikan untuk HP */
+    line-height: 1.25;
+    margin-block: 0.4rem 0.8rem;
+  }
+
+  .hero-copy p {
+    font-size: 0.88rem !important;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
 /* Styling kontainer teks hero agar posisi dan jaraknya pas */
 .hero-copy {
   position: absolute;
