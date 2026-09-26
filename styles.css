@@ -166,40 +166,42 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 /* -------------------------------------------------- hero / slider */
 .hero {
   position: relative;
-  width: 100%; /* Memastikan hero melebar full ke kiri-kanan */
+  width: 100%;
   background: var(--ink);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
 }
 
 .hero-bg-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 550px; /* Tinggi disesuaikan untuk desktop */
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  z-index: 0;
 }
 
-/* Mempergelap overlay (scrim) agar teks HTML terbaca jelas */
+/* Gelapkan background agar teks selalu terbaca terang */
 .hero-scrim {
   position: absolute;
   inset: 0;
-  /* Dibuat lebih gelap dengan opacity lebih tinggi (0.75 s/d 0.90) */
   background: linear-gradient(
-    90deg, 
-    rgba(15, 30, 25, 0.92) 0%, 
-    rgba(15, 30, 25, 0.75) 50%, 
-    rgba(15, 30, 25, 0.5) 100%
+    180deg, 
+    rgba(15, 30, 25, 0.88) 0%, 
+    rgba(15, 30, 25, 0.75) 100%
   );
   z-index: 1;
 }
 
 .hero-copy {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
+  position: relative;
   z-index: 2;
-  padding-block: 2rem;
+  width: 100%;
+  padding-block: 3.5rem 3rem;
 }
 
 .hero-eyebrow {
@@ -207,23 +209,22 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.03em;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .hero-copy h1 {
   color: var(--white);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  line-height: 1.2;
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  line-height: 1.25;
   margin-block: 0.4rem 1rem;
-  /* Shadow tambahan di teks agar semakin kontras */
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-copy p {
   color: rgba(255, 255, 255, 0.95);
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   margin-bottom: 1.5rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-actions {
@@ -233,166 +234,25 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   align-items: center;
 }
 
-/* Layout Khusus HP / Mobile */
-@media (max-width: 640px) {
-  .hero-bg-img {
-    height: 100%;
-    position: absolute;
-    inset: 0;
-  }
-
-  .hero-scrim {
-    /* Di HP dibuat gelap penuh dari atas sampai bawah */
-    background: rgba(15, 30, 25, 0.88);
-  }
-
-  .hero-copy {
-    position: relative;
-    padding-block: 3rem 2.5rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* Memastikan overlay gelap ada di belakang teks */
-.hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(21, 42, 37, 0.5) 0%, rgba(21, 42, 37, 0.85) 100%);
-  z-index: 1;
-}
-
-/* Layout Desktop (Layar Lebar) */
-@media (min-width: 641px) {
-  .hero-bg-img {
-    height: 520px; /* Tinggi banner di komputer */
-  }
-
-  .hero-copy {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    z-index: 2;
-    padding-block: 2rem;
-  }
-}
-
-/* Layout Mobile (Layar HP) - Solusi Gambar & Teks Terpotong */
+/* Penyesuaian tampilan khusus HP */
 @media (max-width: 640px) {
   .hero {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero-bg-img {
-    position: absolute;
-    inset: 0;
-    height: 100%; /* Gambar mengikuti tinggi container hero */
+    min-height: auto;
   }
 
   .hero-copy {
-    position: relative;
-    z-index: 2;
-    padding-block: 3rem 2.5rem; /* Memberi ruang atas dan bawah yang cukup */
-  }
-
-  .hero-copy h1 {
-    font-size: 1.5rem !important; /* Ukuran judul disesuaikan untuk HP */
-    line-height: 1.25;
-    margin-block: 0.4rem 0.8rem;
-  }
-
-  .hero-copy p {
-    font-size: 0.88rem !important;
-    margin-bottom: 1.25rem;
+    padding-block: 2.5rem 2rem;
   }
 
   .hero-actions {
-    display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* Styling kontainer teks hero agar posisi dan jaraknya pas */
-.hero-copy {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  z-index: 2;
-  color: var(--white);
-  padding-block: 2rem;
-}
-
-/* Memastikan overlay hitam transparan ada di belakang teks */
-.hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(21, 42, 37, 0.4) 0%, rgba(21, 42, 37, 0.75) 100%);
-  z-index: 1;
-}
-
-.hero-copy h1 {
-  color: var(--white);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  margin-block: 0.5rem 1rem;
-}
-
-.hero-copy p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  margin-bottom: 1.5rem;
-}
-
-/* Mengatur jarak antar tombol 'Beli Sekarang' dan 'Lihat Produk' */
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem; /* Jarak pas antar tombol (tidak terlalu jauh) */
-  align-items: center;
-}
-
-/* Penyesuaian khusus tampilan Layar HP / Mobile */
-@media (max-width: 640px) {
-  .hero-actions {
-    flex-direction: column; /* Tombol bertumpuk rapi di layar HP */
     align-items: stretch;
   }
 
   .hero-actions .btn {
-    justify-content: center;
     width: 100%;
+    justify-content: center;
   }
-}
-
-
-.hero-bg-img {
-  width: 100%;
-  height: auto; /* Memilih rasio asli gambar */
-  max-height: 500px;
-  object-fit: contain; /* Gambar tidak terpotong sama sekali */
-  display: block;
-  margin: 0 auto;
-}
-}
-@media (max-width: 640px) {
-  .hero-bg-img { height: 78vh; min-height: 480px; max-height: 560px; }
 }
 
 /* simple hero (interior pages) */
