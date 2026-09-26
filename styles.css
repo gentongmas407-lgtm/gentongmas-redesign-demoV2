@@ -169,6 +169,60 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   background: var(--ink);
   overflow: hidden;
 }
+
+/* Styling kontainer teks hero agar posisi dan jaraknya pas */
+.hero-copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  color: var(--white);
+  padding-block: 2rem;
+}
+
+/* Memastikan overlay hitam transparan ada di belakang teks */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(21, 42, 37, 0.4) 0%, rgba(21, 42, 37, 0.75) 100%);
+  z-index: 1;
+}
+
+.hero-copy h1 {
+  color: var(--white);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-block: 0.5rem 1rem;
+}
+
+.hero-copy p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  margin-bottom: 1.5rem;
+}
+
+/* Mengatur jarak antar tombol 'Beli Sekarang' dan 'Lihat Produk' */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* Jarak pas antar tombol (tidak terlalu jauh) */
+  align-items: center;
+}
+
+/* Penyesuaian khusus tampilan Layar HP / Mobile */
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-direction: column; /* Tombol bertumpuk rapi di layar HP */
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+
 .hero-bg-img {
   width: 100%;
   height: auto; /* Memilih rasio asli gambar */
