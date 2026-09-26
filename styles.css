@@ -185,7 +185,6 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   z-index: 0;
 }
 
-/* Gelapkan background agar teks selalu terbaca terang */
 .hero-scrim {
   position: absolute;
   inset: 0;
@@ -234,7 +233,6 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   align-items: center;
 }
 
-/* Penyesuaian tampilan khusus HP */
 @media (max-width: 640px) {
   .hero {
     min-height: auto;
@@ -516,8 +514,8 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   width: 7px; height: 7px; border-radius: 50%; border: none;
   background: var(--line); cursor: pointer; padding: 0;
 }
-.testi-dots button.active { background: var(--clay);
-}
+.testi-dots button.active { background: var(--clay); }
+
 .testi-grid { display: grid; gap: 1.75rem; grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 640px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
 .testi-grid-item { margin: 0; }
@@ -555,7 +553,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   padding-block: 3.5rem;
   grid-template-columns: 1fr;
 }
-@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
 .footer-brand img { width: 44px; margin-bottom: 1rem; }
 .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-bottom: 0.25rem; }
 .footer-heading { color: var(--white); font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; margin-bottom: 1rem; }
@@ -569,6 +567,8 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   font-size: 1.1rem;
 }
 .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-cert { display: flex; gap: 0.6rem; margin-top: 1rem; }
+.footer-cert img { height: 34px; width: auto; background: var(--white); padding: 4px 6px; border-radius: 4px; }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.1);
   text-align: center;
@@ -577,7 +577,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   color: rgba(255,255,255,0.4);
 }
 
-/* -------------------------------------------------- prose helpers for about content already using .article */
+/* -------------------------------------------------- prose helpers */
 .grid-2col { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .grid-2col { grid-template-columns: 2fr 1fr; gap: 4rem; } }
 
@@ -591,10 +591,6 @@ a:focus-visible, button:focus-visible {
   html { scroll-behavior: auto; }
   .testi-track, .hero-dots button { transition: none; }
 }
-
-@media (min-width: 720px) { .footer-grid { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
-.footer-cert { display: flex; gap: 0.6rem; margin-top: 1rem; }
-.footer-cert img { height: 34px; width: auto; background: var(--white); padding: 4px 6px; border-radius: 4px; }
 
 /* -------------------------------------------------- FAQ Accordion */
 .faq-item {
@@ -623,7 +619,6 @@ a:focus-visible, button:focus-visible {
   transition: transform 0.3s ease;
 }
 
-/* Sembunyikan jawaban secara default */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
@@ -637,11 +632,10 @@ a:focus-visible, button:focus-visible {
   font-size: 0.92rem;
 }
 
-/* Tampilan saat FAQ aktif/terbuka */
 .faq-item.active .faq-answer {
-  max-height: 200px; /* Menampilkan isi jawaban */
+  max-height: 200px;
 }
 
 .faq-item.active .faq-toggle {
-  transform: rotate(45deg); /* Mengubah tanda + menjadi x */
+  transform: rotate(45deg);
 }
