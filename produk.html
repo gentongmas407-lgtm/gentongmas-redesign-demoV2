@@ -14,7 +14,9 @@
   <meta name="description" content="Katalog Produk Gentong Mas — Minuman herbal gula aren &amp; habbatussauda pilihan. Tersedia varian sachet dan toples 200gr. Dapatkan harga promo di website resmi.">
   <title>Produk Kami — Gentong Mas</title>
   
-  <link rel="icon" type="image/webp" href="gentongmas-images/gentongmas-logo-new.webp">
+  <!-- FAVICON PRESISI & TIDAK GEPENG -->
+  <link rel="icon" type="image/x-icon" href="gentongmas-images/gentongmas-logo-new.webp">
+  <link rel="shortcut icon" href="gentongmas-images/gentongmas-logo-new.webp">
   <link rel="apple-touch-icon" href="gentongmas-images/gentongmas-logo-new.webp">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,6 +63,45 @@
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.03em;
+    }
+
+    /* FIX PENATAAN BENEFT LIST AGAR RAPI DI LAYAR KOMPUTER & HP */
+    .benefit-list-fix {
+      background: #e4e8d8;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-block: 1.5rem;
+    }
+    .benefit-list-fix .benefit-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #295C50;
+      margin-bottom: 1rem;
+    }
+    .benefit-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .benefit-item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .benefit-item-row i {
+      color: #AD8B43;
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+    .benefit-item-text {
+      font-size: 0.9rem;
+      color: #152A25;
+      line-height: 1.5;
+    }
+    .benefit-item-text strong {
+      color: #295C50;
     }
   </style>
 </head>
@@ -178,14 +219,35 @@
         <!-- Khasiat & Kandungan -->
         <h3 style="margin-top:2rem; font-size:1.6rem;">Khasiat &amp; Kandungan Utama</h3>
         
-        <div class="benefit-list">
-          <p>Manfaat Utama Gentong Mas Harian:</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> <strong>Meningkatkan Daya Tahan Tubuh:</strong> Kaya antioksidan alami dari Habbatussauda &amp; Eugenol Cengkeh.</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> <strong>Menjaga Gula Darah &amp; Kolesterol:</strong> Indeks glikemik gula aren rendah aman untuk kestabilan energi harian.</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> <strong>Meredakan Pegal Linu &amp; Asam Urat:</strong> Kandungan piperin lada hitam dan kayu manis memperlancar peredaran darah.</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> <strong>Menyehatkan Pencernaan &amp; Maag:</strong> Kapulaga dan bunga lawang hangat menenangkan asam lambung.</li>
-          </ul>
+        <!-- BLOK KHASIAT LENGKAP RAPI DENGAN FLEXBOX -->
+        <div class="benefit-list-fix">
+          <div class="benefit-title">Manfaat Utama Gentong Mas Harian:</div>
+          <div class="benefit-items">
+            <div class="benefit-item-row">
+              <i class="fa-solid fa-check"></i>
+              <div class="benefit-item-text">
+                <strong>Meningkatkan Daya Tahan Tubuh:</strong> Kaya antioksidan alami dari Habbatussauda &amp; Eugenol Cengkeh.
+              </div>
+            </div>
+            <div class="benefit-item-row">
+              <i class="fa-solid fa-check"></i>
+              <div class="benefit-item-text">
+                <strong>Menjaga Gula Darah &amp; Kolesterol:</strong> Indeks glikemik gula aren rendah aman untuk kestabilan energi harian.
+              </div>
+            </div>
+            <div class="benefit-item-row">
+              <i class="fa-solid fa-check"></i>
+              <div class="benefit-item-text">
+                <strong>Meredakan Pegal Linu &amp; Asam Urat:</strong> Kandungan piperin lada hitam dan kayu manis memperlancar peredaran darah.
+              </div>
+            </div>
+            <div class="benefit-item-row">
+              <i class="fa-solid fa-check"></i>
+              <div class="benefit-item-text">
+                <strong>Menyehatkan Pencernaan &amp; Maag:</strong> Kapulaga dan bunga lawang hangat menenangkan asam lambung.
+              </div>
+            </div>
+          </div>
         </div>
 
         <p>Seluruh bahan baku dipanen langsung dari petani lokal di Garut, Jawa Barat, kemudian diolah higienis oleh unit usaha Ponpes Sadang Lebak untuk menjamin kualitas rasa serta khasiat yang konsisten.</p>
