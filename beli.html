@@ -20,16 +20,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-uC5+fh9SYoPfzovfrENvLP3zUVlKZkPRRv0EGkG7AfXmr6oF53m8mc1XikFJrGBVgWST6iM6FeDX3IVXDf5Ugg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Penyesuaian khusus foto produk persegi 1:1 ringkas untuk halaman beli */
+  /* Penyesuaian khusus foto produk persegi 1:1 ringkas & tombol beli */
   .order-product-card {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1.25rem;
-    padding: 1rem;
+    padding: 1.25rem;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 8px;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .order-product-main {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex: 1;
+    min-width: 260px;
   }
   .order-product-card img {
     width: 80px;
@@ -38,9 +47,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     object-fit: cover;
     border-radius: 6px;
     flex-shrink: 0;
-  }
-  .order-product-info {
-    flex: 1;
   }
   .order-product-info h3 {
     font-size: 1.05rem;
@@ -51,6 +57,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 0.82rem;
     color: var(--ink-soft);
     margin-bottom: 0.4rem;
+  }
+  .btn-buy-now {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
   }
 </style>
 </head>
@@ -117,42 +132,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- PILIHAN PRODUK DENGAN FOTO PERSEGI 1:1 KECIL (DARI BERANDA) -->
+<!-- PILIHAN PRODUK DENGAN FOTO PERSEGI 1:1 KECIL & TOMBOL BELI -->
 <section class="section">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow-line">Pilihan Varian</div>
       <h2>Pilih varian produk favoritmu</h2>
-      <p>Foto produk dalam ukuran kecil persegi (1:1) yang siap dipesan.</p>
+      <p>Klik tombol Beli untuk langsung mengisi form pemesanan di bawah.</p>
     </div>
 
     <div class="product-grid">
       <!-- Varian 1 -->
       <div class="order-product-card">
-        <img src="gentongmas-images/produk/produk10.webp" alt="Gentong Mas 10 Sachet">
-        <div class="order-product-info">
-          <h3>Gentong Mas — 10 Sachet</h3>
-          <p>Praktis diseduh, cocok untuk konsumsi harian.</p>
-          <div class="price-row" style="margin: 0;">
-            <span class="price-old">Rp80.000</span>
-            <span class="price-new">Rp65.000</span>
-            <span class="badge-save">Hemat Rp15rb</span>
+        <div class="order-product-main">
+          <img src="gentongmas-images/produk/produk10.webp" alt="Gentong Mas 10 Sachet">
+          <div class="order-product-info">
+            <h3>Gentong Mas — 10 Sachet</h3>
+            <p>Praktis diseduh, cocok untuk konsumsi harian.</p>
+            <div class="price-row" style="margin: 0;">
+              <span class="price-old">Rp80.000</span>
+              <span class="price-new">Rp65.000</span>
+              <span class="badge-save">Hemat Rp15rb</span>
+            </div>
           </div>
         </div>
+        <button onclick="pilihVarian('Gentong Mas - 10 Sachet (Rp65.000)')" class="btn btn-primary btn-buy-now">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L4.7 15.3C4.1 15.9 4.5 17 5.4 17H17M17 17C15.9 17 15 17.9 15 19C15 20.1 15.9 21 17 21C18.1 21 19 20.1 19 19C19 17.9 18.1 17 17 17ZM9 19C9 20.1 8.1 21 7 21C5.9 21 5 20.1 5 19C5 17.9 5.9 17 7 17C8.1 17 9 17.9 9 19Z"/></svg>
+          Beli
+        </button>
       </div>
 
       <!-- Varian 2 -->
       <div class="order-product-card">
-        <img src="gentongmas-images/produk/produk250gr.webp" alt="Gentong Mas 200gr Toples">
-        <div class="order-product-info">
-          <h3>Gentong Mas — 200gr</h3>
-          <p>Kemasan toples, lebih hemat untuk konsumsi rutin.</p>
-          <div class="price-row" style="margin: 0;">
-            <span class="price-old">Rp80.000</span>
-            <span class="price-new">Rp50.000</span>
-            <span class="badge-save">Hemat Rp30rb</span>
+        <div class="order-product-main">
+          <img src="gentongmas-images/produk/produk250gr.webp" alt="Gentong Mas 200gr Toples">
+          <div class="order-product-info">
+            <h3>Gentong Mas — 200gr</h3>
+            <p>Kemasan toples, lebih hemat untuk konsumsi rutin.</p>
+            <div class="price-row" style="margin: 0;">
+              <span class="price-old">Rp80.000</span>
+              <span class="price-new">Rp50.000</span>
+              <span class="badge-save">Hemat Rp30rb</span>
+            </div>
           </div>
         </div>
+        <button onclick="pilihVarian('Gentong Mas - 200gr Toples (Rp50.000)')" class="btn btn-primary btn-buy-now">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L4.7 15.3C4.1 15.9 4.5 17 5.4 17H17M17 17C15.9 17 15 17.9 15 19C15 20.1 15.9 21 17 21C18.1 21 19 20.1 19 19C19 17.9 18.1 17 17 17ZM9 19C9 20.1 8.1 21 7 21C5.9 21 5 20.1 5 19C5 17.9 5.9 17 7 17C8.1 17 9 17.9 9 19Z"/></svg>
+          Beli
+        </button>
       </div>
     </div>
   </div>
@@ -189,7 +216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- FORM PEMESANAN -->
-<section class="section">
+<section class="section" id="form-pemesanan">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow-line">Form Pemesanan</div>
@@ -261,6 +288,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 const GOOGLE_SHEET_WEBHOOK_URL = "";
 const WHATSAPP_NUMBER = "6285724981894";
+
+// Fungsi untuk memilih varian & otomatis scroll halus ke Form Pemesanan
+function pilihVarian(namaVarian) {
+  const selectVarian = document.getElementById("varian");
+  if (selectVarian) {
+    selectVarian.value = namaVarian;
+  }
+  
+  const formSection = document.getElementById("form-pemesanan");
+  if (formSection) {
+    formSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
 document.getElementById("order-form").addEventListener("submit", function (e) {
   e.preventDefault();
