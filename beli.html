@@ -19,6 +19,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-uC5+fh9SYoPfzovfrENvLP3zUVlKZkPRRv0EGkG7AfXmr6oF53m8mc1XikFJrGBVgWST6iM6FeDX3IVXDf5Ugg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Penyesuaian khusus foto produk persegi 1:1 ringkas untuk halaman beli */
+  .order-product-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .order-product-card img {
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .order-product-info {
+    flex: 1;
+  }
+  .order-product-info h3 {
+    font-size: 1.05rem;
+    font-family: var(--font-display);
+    margin-bottom: 0.25rem;
+  }
+  .order-product-info p {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.4rem;
+  }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -26,6 +60,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- HEADER DISAMAKAN DENGAN BERANDA (INDEX.HTML) -->
 <header class="site-header-new">
   <div class="wrap header-inner">
     <a href="index.html" class="brand-new">
@@ -73,7 +108,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <section class="page-hero">
-  <img src="gentongmas-images/produk/gentongmas(3).jpg" alt="Beli Gentong Mas">
+  <img src="gentongmas-images/testimoni/gentongmas (2).jpg" alt="Beli Gentong Mas">
   <div class="hero-scrim"></div>
   <div class="hero-copy">
     <div class="wrap">
@@ -82,12 +117,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- PILIHAN PRODUK DENGAN FOTO PERSEGI 1:1 KECIL (DARI BERANDA) -->
 <section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line">Pilihan Varian</div>
+      <h2>Pilih varian produk favoritmu</h2>
+      <p>Foto produk dalam ukuran kecil persegi (1:1) yang siap dipesan.</p>
+    </div>
+
+    <div class="product-grid">
+      <!-- Varian 1 -->
+      <div class="order-product-card">
+        <img src="gentongmas-images/produk/produk10.webp" alt="Gentong Mas 10 Sachet">
+        <div class="order-product-info">
+          <h3>Gentong Mas — 10 Sachet</h3>
+          <p>Praktis diseduh, cocok untuk konsumsi harian.</p>
+          <div class="price-row" style="margin: 0;">
+            <span class="price-old">Rp80.000</span>
+            <span class="price-new">Rp65.000</span>
+            <span class="badge-save">Hemat Rp15rb</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Varian 2 -->
+      <div class="order-product-card">
+        <img src="gentongmas-images/produk/produk250gr.webp" alt="Gentong Mas 200gr Toples">
+        <div class="order-product-info">
+          <h3>Gentong Mas — 200gr</h3>
+          <p>Kemasan toples, lebih hemat untuk konsumsi rutin.</p>
+          <div class="price-row" style="margin: 0;">
+            <span class="price-old">Rp80.000</span>
+            <span class="price-new">Rp50.000</span>
+            <span class="badge-save">Hemat Rp30rb</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERBANDINGAN HARGA -->
+<section class="section section-alt" style="padding-top: 2rem;">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow-line">Bandingkan Harga</div>
       <h2>Lebih hemat kalau beli langsung di web</h2>
-      <p>Harga khusus Rp70.000 berlaku permanen untuk pemesanan lewat form ini. Saat event tertentu (1.1, 12.12, dll), harga bisa lebih murah lagi.</p>
+      <p>Harga khusus berlaku permanen untuk pemesanan lewat form ini dibanding pembelian di marketplace.</p>
     </div>
     <table class="compare-table">
       <thead>
@@ -102,16 +179,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <td class="price">Rp80.000</td>
         </tr>
         <tr class="col-web">
-          <td>Website Gentong Mas <span class="badge-save">Hemat Rp10rb</span></td>
-          <td class="price">Rp70.000</td>
+          <td>Website Gentong Mas <span class="badge-save">Hemat s/d Rp30rb</span></td>
+          <td class="price">Rp50.000 &ndash; Rp65.000</td>
         </tr>
       </tbody>
     </table>
-    <p class="form-note" style="margin-top:0.75rem;">*Harga event/flash sale (1.1, 12.12, dll) bisa turun hingga Rp60.000&ndash;Rp65.000, info lebih lanjut lewat WhatsApp/Instagram kami.</p>
+    <p class="form-note" style="margin-top:0.75rem;">*Harga promo event/flash sale bisa lebih hemat lagi, konfirmasi pesanan langsung via WhatsApp kami.</p>
   </div>
 </section>
 
-<section class="section section-alt">
+<!-- FORM PEMESANAN -->
+<section class="section">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow-line">Form Pemesanan</div>
@@ -120,6 +198,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <form class="order-form" id="order-form">
+      <div class="form-row">
+        <label for="varian">Varian Produk</label>
+        <select id="varian" name="varian" required>
+          <option value="Gentong Mas - 10 Sachet (Rp65.000)">Gentong Mas — 10 Sachet (Rp65.000)</option>
+          <option value="Gentong Mas - 200gr Toples (Rp50.000)">Gentong Mas — 200gr Toples (Rp50.000)</option>
+        </select>
+      </div>
       <div class="form-row">
         <label for="nama">Nama Lengkap</label>
         <input type="text" id="nama" name="nama" required placeholder="Nama penerima">
@@ -181,6 +266,7 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const f = e.target;
   const data = {
+    varian: f.varian.value,
     nama: f.nama.value.trim(),
     telepon: f.telepon.value.trim(),
     jumlah: f.jumlah.value.trim(),
@@ -190,7 +276,6 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
     kodepos: f.kodepos.value.trim(),
     ekspedisi: f.ekspedisi.value,
     tanggal: new Date().toLocaleString("id-ID"),
-    harga: "Rp70.000",
   };
 
   if (window.dataLayer) {
@@ -208,6 +293,7 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
 
   const pesan =
     "Halo, saya mau pesan Gentong Mas 🙏\n\n" +
+    "Varian Produk: " + data.varian + "\n" +
     "Nama Lengkap: " + data.nama + "\n" +
     "No. Telepon: " + data.telepon + "\n" +
     "Jumlah: " + data.jumlah + " pcs\n" +
@@ -216,13 +302,14 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
     "Kabupaten: " + data.kabupaten + "\n" +
     "Kode Pos: " + data.kodepos + "\n" +
     "Ekspedisi: " + data.ekspedisi + "\n\n" +
-    "Harga khusus web: Rp70.000. Mohon diproses ya, terima kasih!";
+    "Mohon diproses ya, terima kasih!";
 
   const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(pesan);
   window.open(waUrl, "_blank");
 });
 </script>
 
+<!-- FOOTER DISAMAKAN DENGAN BERANDA (INDEX.HTML) -->
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
