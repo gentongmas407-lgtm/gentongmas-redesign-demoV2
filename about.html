@@ -11,7 +11,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Minuman herbal premium sejak 2003. Keajaiban habbatussauda &amp; rempah alami untuk kesehatan, diracik oleh Ponpes Sadang Lebak, Garut.">
+  <meta name="description" content="Sejarah & Profil Gentong Mas — Karya cipta H. Aceng Hasan (Abah), pengasuh Ponpes Sadang Lebak Garut. Minuman herbal gula aren & habbatussauda terstandar CPOTB, BPOM, dan Halal MUI.">
   <title>Tentang Kami — Gentong Mas</title>
   
   <link rel="icon" type="image/webp" href="gentongmas-images/gentongmas-logo-new.webp">
@@ -22,6 +22,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-uC5+fh9SYoPfzovfrENvLP3zUVlKZkPRRv0EGkG7AfXmr6oF53m8mc1XikFJrGBVgWST6iM6FeDX3IVXDf5Ugg==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styling khusus daftar pesantren & sertifikasi sidebar */
+    .ponpes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.6rem;
+      margin: 1.2rem 0 2rem;
+      padding: 0;
+      list-style: none;
+    }
+    .ponpes-list li {
+      background: var(--paper-deep);
+      padding: 0.6rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .ponpes-list li i {
+      color: var(--clay);
+      font-size: 0.8rem;
+    }
+    .cert-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .cert-badge {
+      display: inline-block;
+      background: var(--sage);
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -29,10 +72,11 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <!-- HEADER SAMAKAN DENGAN BERANDA (INDEX.HTML) -->
   <header class="site-header-new">
     <div class="wrap header-inner">
       <a href="index.html" class="brand-new">
-        <img src="gentongmas-images/gentongmas-logo-new.webp" alt="Logo Gentong Mas" width="60" height="60">
+        <img src="gentongmas-images/gentongmas-logo-new.webp" alt="Logo Gentong Mas" class="brand-logo-img">
         <div class="brand-text">
           <span class="brand-title">Gentong Mas</span>
           <span class="brand-subtitle">Warisan Alam, Untuk Kesehatan</span>
@@ -55,7 +99,7 @@
         <div class="nav-icons">
           <a href="#" aria-label="Cari"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="6"/><path d="M17 17l-4-4" stroke-linecap="round"/></svg></a>
           <a href="#" aria-label="Akun Saya"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke-linecap="round"/></svg></a>
-          <a href="beli.html" aria-label="Keranjang Belanja"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.1 15.9 4.5 17 5.4 17H17M17 17C15.9 17 15 17.9 15 19C15 20.1 15.9 21 17 21C18.1 21 19 20.1 19 19C19 17.9 18.1 17 17 17ZM9 19C9 20.1 8.1 21 7 21C5.9 21 5 20.1 5 19C5 17.9 5.9 17 7 17C8.1 17 9 17.9 9 19Z"/></svg></a>
+          <a href="beli.html" aria-label="Keranjang Belanja"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L4.7 15.3C4.1 15.9 4.5 17 5.4 17H17M17 17C15.9 17 15 17.9 15 19C15 20.1 15.9 21 17 21C18.1 21 19 20.1 19 19C19 17.9 18.1 17 17 17ZM9 19C9 20.1 8.1 21 7 21C5.9 21 5 20.1 5 19C5 17.9 5.9 17 7 17C8.1 17 9 17.9 9 19Z"/></svg></a>
         </div>
         <button id="menu-btn" class="menu-btn-new" aria-label="Buka menu" aria-expanded="false">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 5H18M2 10H18M2 15H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -76,11 +120,11 @@
   </header>
 
   <section class="page-hero">
-    <img src="gentongmas-images/dokumentasi/gentongmas(2).jpg" alt="Gentong Mas di tengah masyarakat Garut">
+    <img src="gentongmas-images/testimoni/gentongmas (2).jpg" alt="Sejarah & Profil Gentong Mas Garut">
     <div class="hero-scrim"></div>
     <div class="hero-copy">
       <div class="wrap">
-        <h1>Tentang Kami</h1>
+        <h1>Sejarah &amp; Profil Gentong Mas</h1>
       </div>
     </div>
   </section>
@@ -88,78 +132,123 @@
   <section class="section">
     <div class="wrap grid-2col">
       <div class="article">
-        <h2>Minuman herbal dari pesantren mandiri</h2>
-        <p><strong>Ponpes Sadang Lebak</strong>, yang terletak di Kampung Sadang Lebak, Desa Situsari, Kecamatan Karangpawitan, Garut, telah memproduksi minuman herbal <strong>Gentong Mas</strong> sejak tahun 2003. Berbahan dasar gula merah dan jintan hitam (habbatussauda), Gentong Mas dikenal bermanfaat untuk menjaga kesehatan dan membantu mencegah berbagai penyakit.</p>
+        <div class="eyebrow-line">Karya Cipta Pesantren</div>
+        <h2>Sejarah Gentong Mas</h2>
+
+        <p><strong>H. Aceng Hasan</strong>—atau yang lebih akrab disapa <strong>Abah</strong> oleh para jamaahnya—merupakan pengasuh Pondok Pesantren Sadang Lebak, Garut. Abah memiliki garis keturunan pendakwah yang sangat kuat dari para pendahulunya, yaitu <strong>KH. Ade Rosyied Hidayat / Ceng Ade (alm)</strong> sebagai ayah, dan <strong>KH. Apipuddin Bin H. Al Nasik (alm)</strong> selaku kakek yang merupakan pendiri Ponpes Sadang Lebak.</p>
+
+        <p>Pendidikan religius dan kematangan keilmuan agama didapatkan Abah saat menimba ilmu di berbagai pondok pesantren terkemuka di tanah air, di antaranya:</p>
+
+        <ul class="ponpes-list">
+          <li><i class="fa-solid fa-kaaba"></i> Ponpes Tebuireng, Jombang</li>
+          <li><i class="fa-solid fa-kaaba"></i> Ponpes Ploso, Jawa Timur</li>
+          <li><i class="fa-solid fa-kaaba"></i> Pesantren di Demak &amp; Kudus</li>
+          <li><i class="fa-solid fa-kaaba"></i> Ponpes Darul Hikam, Sukabumi</li>
+          <li><i class="fa-solid fa-kaaba"></i> Ponpes Riyadul Alfiah Kadukawen</li>
+          <li><i class="fa-solid fa-kaaba"></i> Ponpes Riyadul Alfiah, Sadang</li>
+          <li><i class="fa-solid fa-kaaba"></i> Ponpes Minhajul Karomah, Banjar</li>
+        </ul>
+
+        <p>Kini Abah memimpin Pondok Pesantren Sadang Lebak dengan berbagai rutinitas keagamaan harian, seperti pengajaran ilmu agama santri putra-putri, pengajian rutin malam Jumat yang diikuti jamaah dari dalam dan luar Jawa, hingga pelatihan khusus bela diri. Dalam kegiatannya, Abah turun secara langsung dibantu oleh para pendakwah lainnya.</p>
+
+        <div class="split media-text" style="margin-block: 2rem;">
+          <div class="split-media">
+            <img src="gentongmas-images/produk/produk-display-1.webp" alt="Produk Gentong Mas Garut" class="split-img-square">
+          </div>
+          <div class="split-copy">
+            <h3>Kemandirian Ekonomi &amp; Kesejahteraan Santri</h3>
+            <p>Dengan berbagai kegiatan tersebut, Ponpes Sadang Lebak menerapkan sistem <strong>bebas biaya pendidikan, makan gratis, serta jaminan pengobatan gratis bagi santri yang sakit</strong>.</p>
+            <p>Seluruh biaya operasional, konsumsi pengajian, serta perbaikan sarana dan prasarana pesantren menjadi tanggungan Abah yang didanai melalui unit-unit usaha mandiri yang dikembangkannya.</p>
+          </div>
+        </div>
 
         <blockquote>
-          <p>&ldquo;Saya membuat pabrik ini untuk membantu orang-orang tidak mampu agar bisa mengaji di pesantren kami. Santri di sini gratis, termasuk listrik, makan, dan biaya kesehatan.&rdquo;</p>
-          <cite>— KH. Aceng Hasan, Pengasuh Ponpes Sadang Lebak</cite>
+          <p>&ldquo;Saya mendirikan usaha ini agar hasil penjualan memberikan kemanfaatan bagi segenap santri di pesantren—mulai dari bebas biaya sekolah, bebas makan, pengobatan santri yang sakit, hingga konsumsi pengajian rutin masyarakat.&rdquo;</p>
+          <cite>— H. Aceng Hasan (Abah), Pemilik &amp; Direktur Utama CV. Gentong Mas</cite>
         </blockquote>
 
-        <p>Usaha Gentong Mas yang dikelola oleh <strong>PT Gentong Mas</strong> telah menjangkau seluruh Indonesia, termasuk segmen apotek.</p>
+        <h3>Transformasi Bisnis &amp; Standar Regulasi Modern</h3>
+        <p>Selain pengasuh pesantren, Abah merupakan seorang pengusaha sukses yang memimpin perusahaan <strong>CV. Gentong Mas</strong>. Tidak banyak orang tahu bahwa produk <strong>Gentong Mas</strong> merupakan karya cipta asli dari H. Aceng Hasan (Abah) sebagai olahan racikan rempah pilihan dan gula aren khas Garut.</p>
 
-        <p>Gentong Mas juga telah mengantongi izin edar dari BPOM dan sertifikat halal dari MUI. Produk ini tidak mengandung bahan pengawet dan masa kedaluwarsanya bisa mencapai dua tahun.</p>
+        <p>Walaupun bertumbuh dari lingkungan pesantren, Abah berhasil membawa perusahaan bertransformasi dari awal berupa <strong>PD. Gentong Mas</strong> menjadi <strong>CV. Gentong Mas</strong>, serta menaikkan kelas legalitas produk minuman herbal Gentong Mas dari semula berizin P-IRT hingga mengantongi izin resmi <strong>POM TR dari BPOM RI</strong>, bersertifikat <strong>Halal MUI</strong>, dan diproduksi di pabrik terstandar <strong>CPOTB</strong> (Cara Pembuatan Obat Tradisional yang Baik).</p>
 
-        <p>Bahan baku seperti gula aren, habbatussauda, lada hitam, kapol, kayu manis, dan bunga lawang diperoleh dari petani lokal Garut, sekaligus turut memberdayakan ekonomi sekitar.</p>
+        <p>Semua ini dilakukan agar masyarakat dapat merasakan manfaat Gentong Mas dalam menjaga kesehatan sebagai minuman yang menyegarkan, aman, dan nyaman dari seluruh aspek regulasi.</p>
 
         <div class="benefit-list">
-          <p>Khasiat Gentong Mas antara lain:</p>
+          <p>Manfaat &amp; Keunggulan Gentong Mas:</p>
           <ul>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> Meningkatkan daya tahan tubuh</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> Membantu mengatasi diabetes, mag, asam urat, dan reumatik</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> Menurunkan kolesterol tinggi</li>
-            <li><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4 4 8-8"/></svg> Meningkatkan kesehatan pencernaan dan sistem imun</li>
+            <li><i class="fa-solid fa-check"></i> 100% Bahan Alami Tanpa Pengawet Kimia</li>
+            <li><i class="fa-solid fa-check"></i> Membantu Menjaga Daya Tahan Tubuh &amp; Stamina Harian</li>
+            <li><i class="fa-solid fa-check"></i> Membantu Menjaga Kadar Gula Darah &amp; Kolesterol</li>
+            <li><i class="fa-solid fa-check"></i> Meredakan Pegal Linu, Mual, dan Gangguan Pencernaan</li>
+            <li><i class="fa-solid fa-check"></i> Menggunakan Gula Aren Asli dari Petani Lokal Garut</li>
           </ul>
         </div>
 
-        <p>Keunggulan Gentong Mas menarik perhatian <strong>Atalia Praratya Ridwan Kamil</strong>, Ketua Dekranasda Jawa Barat. Dalam kunjungannya ke pabrik Gentong Mas pada 24 Desember 2020, ia mengapresiasi kemandirian ekonomi pesantren Sadang Lebak.</p>
-
-        <blockquote>
-          <p>&ldquo;Pesantren ini tidak mengandalkan bantuan luar, tapi membangun kemandirian melalui usaha nyata seperti Gentong Mas. Ini bisa jadi contoh pesantren ekonomi mandiri di Jawa Barat.&rdquo;</p>
-          <cite>— Atalia Praratya, Ketua Dekranasda Jabar</cite>
-        </blockquote>
-
-        <p>Dengan dukungan Dekranasda dan pemerintah daerah, produk Gentong Mas diharapkan dapat menjangkau pasar yang lebih luas dan menjadi simbol keberhasilan pesantren berbasis kemandirian ekonomi dan inovasi herbal nusantara.</p>
+        <p>Di usianya saat ini, Abah terus berkomitmen untuk memperluas kebermanfaatan Gentong Mas bagi masyarakat luas, sekaligus menginspirasi para pelaku usaha agar senantiasa memberikan kontribusi nyata yang terasa langsung oleh masyarakat.</p>
       </div>
 
+      <!-- SIDEBAR ASET & LOKASI -->
       <aside>
         <div class="side-card">
-          <img src="gentongmas-images/produk/gentongmas-box.webp" alt="Kemasan Gentong Mas">
-          <h3>Sertifikasi</h3>
-          <p>Terdaftar resmi di BPOM RI dan bersertifikat halal MUI, tanpa bahan pengawet.</p>
+          <img src="gentongmas-images/produk/gentongmas-box.webp" alt="Kemasan Gentong Mas 1:1" class="split-img-square">
+          <h3>Sertifikasi Legalisasi</h3>
+          <p>Gentong Mas terdaftar resmi di BPOM RI dan diproduksi di fasilitas terstandar CPOTB.</p>
+          
+          <div class="cert-box">
+            <span class="badge-save">Sertifikat Halal Resmi</span>
+            <p style="font-size: 0.85rem; font-weight: 700; color: var(--clay-dark); margin: 0.2rem 0;">No. Halal MUI:</p>
+            <p style="font-size: 0.9rem; font-family: monospace; font-weight: 700; color: var(--ink); margin: 0;">ID32110027414750925</p>
+          </div>
+
+          <div class="cert-badge-group" style="margin-top: 1rem;">
+            <img src="gentongmas-images/logo-sertifikasi-gentongmas.svg" alt="BPOM & Halal Indonesia">
+          </div>
         </div>
+
         <div class="side-card">
-          <h3>Hubungi Kami</h3>
-          <p>Ingin tahu lebih lanjut atau memesan produk Gentong Mas?</p>
+          <h3>Pemesanan Langsung</h3>
+          <p>Dapatkan harga khusus beli langsung di website resmi Gentong Mas, lebih hemat dibanding marketplace.</p>
           <a href="beli.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
         </div>
       </aside>
     </div>
   </section>
 
+  <!-- CTA BANNER -->
   <div class="cta-banner section">
     <div class="wrap">
-      <h2>Kenali lebih dekat tim di balik Gentong Mas</h2>
-      <p>Dedikasi keluarga besar Ponpes Sadang Lebak dalam menjaga warisan herbal nusantara.</p>
-      <a href="tim-kami.html" class="btn btn-primary">Temui Tim Kami</a>
+      <h2>Ingin merasakan hangatnya racikan herbal Gentong Mas?</h2>
+      <p>Pesan langsung sekarang untuk mendapatkan harga khusus dari pesantren kami.</p>
+      <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Gentong Mas</a>
     </div>
   </div>
 
+  <!-- FOOTER DISAMAKAN DENGAN BERANDA (INDEX.HTML) -->
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div class="footer-brand">
         <img src="gentongmas-images/gentongmas-logo-new.webp" alt="Logo Gentong Mas" width="52">
         <p>PT Gentong Mas Jaya Buana</p>
         <p>&copy; 2026. Seluruh hak cipta dilindungi.</p>
+        <div class="footer-cert">
+          <img src="gentongmas-images/logo-sertifikasi-gentongmas.svg" alt="Sertifikasi BPOM & Halal">
+        </div>
       </div>
       <div>
-        <div class="footer-heading">Navigasi</div>
+        <div class="footer-heading">Jelajahi</div>
         <ul class="footer-links">
           <li><a href="produk.html">Produk</a></li>
-          <li><a href="about.html">Tentang Kami</a></li>
-          <li><a href="tim-kami.html">Tim Kami</a></li>
           <li><a href="testimoni.html">Testimoni</a></li>
           <li><a href="info-kesehatan.html">Info Kesehatan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Tentang</div>
+        <ul class="footer-links">
+          <li><a href="about.html">Tentang Kami</a></li>
+          <li><a href="tim-kami.html">Tim Kami</a></li>
+          <li><a href="https://wa.me/6285724981894">Kontak</a></li>
         </ul>
       </div>
       <div>
