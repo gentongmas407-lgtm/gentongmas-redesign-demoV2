@@ -348,7 +348,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   flex-direction: column;
 }
 
-/* KODE BARU: Mengunci rasio menjadi persegi 1:1 */
+/* FOTO PRODUK PERSEGI 1:1 */
 .product-card img { 
   width: 100%; 
   aspect-ratio: 1 / 1; 
