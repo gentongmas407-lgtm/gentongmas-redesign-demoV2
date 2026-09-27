@@ -430,13 +430,14 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   line-height: 1.45;
 }
 
-/* -------------------------------------------------- KEY INGREDIENTS GRID */
+/* -------------------------------------------------- KEY INGREDIENTS GRID (Bulat Kecil Elegan) */
 .ingredients-section {
-  margin-top: 3.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 .ingredients-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .ingredients-title {
@@ -447,6 +448,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   color: var(--clay-dark);
   display: block;
   margin-bottom: 0.4rem;
+  text-transform: uppercase;
 }
 
 .ingredients-divider {
@@ -458,32 +460,36 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .ingredients-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 2rem 1.25rem;
 }
 
 @media (min-width: 768px) {
   .ingredients-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.75rem;
+    gap: 2.5rem 1.75rem;
   }
 }
 
 .ingredient-item {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
+/* FOTO BULAT LINGKARAN KECIL */
 .ingredient-img-wrap {
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
   overflow: hidden;
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
-  background: var(--paper);
+  margin-bottom: 1rem;
+  background: var(--paper-deep);
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .ingredient-img-wrap img {
@@ -491,19 +497,22 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 50%;
 }
 
 .ingredient-item h4 {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--ink);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
 }
 
 .ingredient-item p {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--ink-soft);
-  line-height: 1.4;
+  line-height: 1.5;
   margin: 0;
 }
 
