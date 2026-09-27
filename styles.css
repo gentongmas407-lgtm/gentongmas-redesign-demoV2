@@ -827,3 +827,24 @@ a:focus-visible, button:focus-visible {
   color: var(--ink-soft);
   margin: 0;
 }
+
+/* Pastikan kontainer gambar responsif */
+.card-image-wrapper, 
+.article-card img, 
+.grid-2col img {
+  width: 100%;
+  height: auto; /* Biarkan tinggi mengikuti rasio asli gambar */
+  max-height: none; /* Hapus batasan tinggi jika ada */
+  object-fit: contain; /* Agar seluruh bagian gambar terlihat tanpa terpotong */
+  display: block;
+}
+
+/* Jika ingin menggunakan rasio aspek yang konsisten di HP tanpa terpotong rata */
+@media (max-width: 768px) {
+  .doc-card img, 
+  .media-card img {
+    height: auto !important;
+    aspect-ratio: 16 / 9; /* Rasio standar foto horizontal HP */
+    object-fit: cover; /* Atau ganti dengan 'contain' jika tidak boleh ada bagian foto terpotong sama sekali */
+  }
+}
