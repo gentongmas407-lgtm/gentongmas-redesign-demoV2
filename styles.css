@@ -227,6 +227,19 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   font-family: var(--font-arimo);
 }
 
+/* Mengatur gambar banner memenuhi seluruh area hero secara proporsional */
+.hero-new .hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* Lapisan bayangan gelap agar teks kontras dan terbaca */
 .hero-scrim-new {
   position: absolute;
   inset: 0;
@@ -239,6 +252,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   z-index: 1;
 }
 
+/* Memastikan teks berada paling depan di atas gambar & scrim */
 .hero-copy-new {
   position: relative;
   z-index: 2;
@@ -295,7 +309,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  background: var(--gold-btn);
+  background: var(--gold-btn, #f1bf24);
   color: #ffffff;
   font-family: var(--font-arimo);
   font-size: 1.2rem;
