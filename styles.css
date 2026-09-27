@@ -654,3 +654,88 @@ a:focus-visible, button:focus-visible {
   font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1.2;
 }
+
+/* -------------------------------------------------- Key Ingredients Section */
+.ingredients-section {
+  padding-block: 2.5rem 1rem;
+}
+
+.ingredients-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.ingredients-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--clay-dark);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.ingredients-divider {
+  flex: 1;
+  height: 1px;
+  background-color: var(--line);
+}
+
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem 1.5rem;
+}
+
+@media (min-width: 540px) {
+  .ingredients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .ingredients-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ingredient-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ingredient-img-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--line);
+  background-color: var(--paper-deep);
+  flex-shrink: 0;
+}
+
+.ingredient-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ingredient-item h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--clay-dark);
+  margin-bottom: 0.5rem;
+}
+
+.ingredient-item p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+}
