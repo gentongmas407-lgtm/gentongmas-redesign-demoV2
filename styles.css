@@ -91,7 +91,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   background: #f7f5ed;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding-block: 0.8rem;
-  font-family: var(--font-arimo);
+  font-family: var(--font-body);
 }
 
 .header-inner {
@@ -152,7 +152,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--font-arimo);
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.95rem;
 }
@@ -161,7 +161,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   color: #000000;
   transition: color 0.2s;
   padding: 0.2rem 0.3rem;
-  font-family: var(--font-arimo);
+  font-family: var(--font-body);
 }
 
 .nav-links-new a:hover,
@@ -216,7 +216,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   display: block;
   padding: 0.7rem 1.5rem;
   color: #ffffff;
-  font-family: var(--font-arimo);
+  font-family: var(--font-body);
   font-weight: 600;
 }
 
