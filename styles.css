@@ -107,7 +107,6 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   gap: 0.8rem;
 }
 
-/* Pengaturan khusus logo header agar presisi & tidak lonjong/ketarik */
 .brand-new img,
 .brand-logo-img {
   width: 52px;
@@ -233,7 +232,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .hero-new {
   position: relative;
   width: 100%;
-  min-height: 380px; /* Disesuaikan untuk HP agar gambar tidak terpotong ekstrem */
+  min-height: 380px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -242,7 +241,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 
 @media (min-width: 768px) {
   .hero-new {
-    min-height: 520px; /* Kembali ke 520px untuk layar Tablet & Desktop */
+    min-height: 520px;
   }
 }
 
@@ -284,7 +283,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-block: 2rem; /* Ringkas di HP agar teks & tombol tidak menutupi produk */
+  padding-block: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -516,7 +515,6 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   flex-direction: column;
 }
 
-/* FOTO PRODUK PERSEGI 1:1 */
 .product-card img { 
   width: 100%; 
   aspect-ratio: 1 / 1; 
@@ -615,7 +613,6 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .split-media img { border-radius: 2px; }
 .split-copy .lede { font-size: 1.05rem; color: var(--ink-soft); font-family: var(--font-body); }
 
-/* Foto split layout persegi 1:1 */
 .split-media img.split-img-square {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -646,20 +643,98 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   font-weight: 600;
   font-family: var(--font-body);
 }
-.benefit-list {
-  list-style: none;
-  margin: 1.75rem 0;
-  padding: 1.75rem;
-  background: var(--sage);
-  display: grid;
+
+/* -------------------------------------------------- Detail Spesifikasi & Khasiat Produk Rapi */
+.product-specs-list {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  margin: 1.5rem 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.product-specs-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.88rem;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 0.55rem;
+}
+
+.product-specs-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.product-specs-label {
+  font-weight: 700;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.product-specs-value {
+  color: var(--ink-soft);
+  text-align: right;
+  font-weight: 500;
+}
+
+.section-subheading {
+  margin-top: 2.2rem;
+  margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+.benefit-subtitle {
+  font-weight: 600;
+  color: var(--clay-dark);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.benefit-point-list {
+  display: flex;
+  flex-direction: column;
   gap: 0.85rem;
+  margin-bottom: 1.75rem;
 }
-.benefit-list p { margin: 0 0 0.75rem; font-family: var(--font-display); font-size: 1.05rem; }
-.benefit-list li {
-  display: flex; gap: 0.7rem; align-items: flex-start;
-  font-size: 0.94rem; color: var(--ink-soft); font-family: var(--font-body);
+
+.benefit-point-item {
+  background: var(--white);
+  border-left: 3.5px solid var(--clay);
+  border-radius: 0 8px 8px 0;
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
-.benefit-list i { color: var(--clay); margin-top: 0.2rem; }
+
+.benefit-point-item strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.benefit-point-item p {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.origin-text {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+}
 
 /* -------------------------------------------------- news / article cards (DOKUMENTASI) */
 .news-grid { display: grid; gap: 2.5rem; }
@@ -712,26 +787,6 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 .side-card img { border-radius: 2px; margin-bottom: 1rem; }
 .side-card p { font-size: 0.88rem; color: var(--ink-soft); font-family: var(--font-body); }
-
-/* Logo Sertifikasi Gabungan di Sidebar */
-.cert-badge-group {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 0.8rem;
-  padding-top: 0.8rem;
-  border-top: 1px dashed var(--line);
-}
-.cert-badge-group img {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-  background: var(--white);
-  padding: 4px;
-  border-radius: 6px;
-  border: 1px solid var(--line);
-  margin-bottom: 0 !important;
-}
 
 /* -------------------------------------------------- testimonials (TESTIMONI) */
 .testi-wrap { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
@@ -857,7 +912,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 
 .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
 
-/* PERBAIKAN LOGO SERTIFIKASI FOOTER AGAR PROPORSI & BERSIH */
+/* FIX LOGO SERTIFIKASI FOOTER HALUS & BERSIH */
 .footer-cert { 
   display: flex; 
   align-items: center;
@@ -866,14 +921,15 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 
 .footer-cert img { 
-  height: 36px; 
+  height: 38px; 
   width: auto; 
   max-width: 100%;
   object-fit: contain;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  filter: brightness(0) invert(1);
+  background: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  filter: none;
 }
 
 .footer-bottom {
@@ -952,263 +1008,6 @@ a:focus-visible, button:focus-visible {
   font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1.2;
   font-family: var(--font-display);
-}
-
-/* -------------------------------------------------- Key Ingredients Section */
-.ingredients-section {
-  padding-block: 2.5rem 1rem;
-}
-
-.ingredients-header {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.ingredients-title {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--clay-dark);
-  white-space: nowrap;
-  text-transform: uppercase;
-}
-
-.ingredients-divider {
-  flex: 1;
-  height: 1px;
-  background-color: var(--line);
-}
-
-.ingredients-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem 1rem;
-}
-
-@media (min-width: 900px) {
-  .ingredients-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem 1.5rem;
-  }
-}
-
-.ingredient-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.ingredient-img-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 0.8rem;
-  border: 1px solid var(--line);
-  background-color: var(--paper-deep);
-  flex-shrink: 0;
-}
-
-.ingredient-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.ingredient-item h4 {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--clay-dark);
-  margin-bottom: 0.35rem;
-}
-
-.ingredient-item p {
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: var(--ink-soft);
-  margin: 0;
-  font-family: var(--font-body);
-}
-
-/* -------------------------------------------------- Detail Spesifikasi & Khasiat Produk */
-.product-specs-list {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  margin: 1.25rem 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.product-specs-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.8rem;
-  font-size: 0.88rem;
-  border-bottom: 1px dashed var(--line);
-  padding-bottom: 0.5rem;
-}
-
-.product-specs-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.product-specs-label {
-  font-weight: 700;
-  color: var(--ink);
-  flex-shrink: 0;
-}
-
-.product-specs-value {
-  color: var(--ink-soft);
-  text-align: right;
-}
-
-.benefit-point-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.benefit-point-item {
-  background: var(--white);
-  border-left: 3px solid var(--clay);
-  border-radius: 0 8px 8px 0;
-  padding: 0.85rem 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-}
-
-.benefit-point-item strong {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--ink);
-  margin-bottom: 0.25rem;
-}
-
-.benefit-point-item p {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  margin: 0;
-  line-height: 1.45;
-}
-
-/* -------------------------------------------------- Halaman Beli & Kartu Produk Responsif Mobile */
-.order-product-card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.25rem;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.order-product-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.order-product-card img {
-  width: 75px;
-  height: 75px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-.order-product-info {
-  flex: 1;
-}
-
-.order-product-info h3 {
-  font-size: 1.05rem;
-  font-family: var(--font-display);
-  margin-bottom: 0.25rem;
-}
-
-.order-product-info p {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  margin-bottom: 0.5rem;
-}
-
-.price-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 0.25rem;
-}
-
-.price-container .price-old {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.price-container .price-new {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--clay-dark);
-  font-family: var(--font-display);
-}
-
-.price-container .badge-save {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--ink);
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.15rem 0.5rem;
-  border-radius: 999px;
-  margin-left: 0;
-}
-
-.btn-buy-now {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.2rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  width: auto;
-  align-self: flex-start;
-}
-
-/* -------------------------------------------------- MEDIA QUERIES */
-@media (min-width: 600px) {
-  .order-product-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .btn-buy-now {
-    align-self: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .testi-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ==========================================================================
