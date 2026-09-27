@@ -444,6 +444,14 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 .split-media img { border-radius: 2px; }
 .split-copy .lede { font-size: 1.05rem; color: var(--ink-soft); }
+/* Foto split layout persegi 1:1 */
+.split-media img.split-img-square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+}
 
 /* -------------------------------------------------- article / prose (about page) */
 .article { max-width: 68ch; }
