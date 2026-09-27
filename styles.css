@@ -874,21 +874,17 @@ a:focus-visible, button:focus-visible {
   background-color: var(--line);
 }
 
+/* DIUBAH: Menggunakan 2 kolom di HP (Mobile) & 4 kolom di Desktop */
 .ingredients-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem 1.5rem;
-}
-
-@media (min-width: 540px) {
-  .ingredients-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(2, 1fr); /* Otomatis 2 kolom ke samping di HP */
+  gap: 1.5rem 1rem;                      /* Jarak antar item disesuaikan */
 }
 
 @media (min-width: 900px) {
   .ingredients-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 kolom sejajar di Layar Komputer */
+    gap: 2rem 1.5rem;
   }
 }
 
@@ -899,11 +895,11 @@ a:focus-visible, button:focus-visible {
 }
 
 .ingredient-img-wrap {
-  width: 72px;
-  height: 72px;
+  width: 64px;                          /* Ukuran lingkaran sedikit disesuaikan agar pas di 2 kolom HP */
+  height: 64px;
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
   border: 1px solid var(--line);
   background-color: var(--paper-deep);
   flex-shrink: 0;
@@ -918,20 +914,19 @@ a:focus-visible, button:focus-visible {
 
 .ingredient-item h4 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 0.95rem;                    /* Ukuran judul disesuaikan untuk HP */
   font-weight: 600;
   color: var(--clay-dark);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .ingredient-item p {
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 0.78rem;                    /* Ukuran ringkasan teks pas dibaca */
+  line-height: 1.45;
   color: var(--ink-soft);
   margin: 0;
   font-family: var(--font-body);
 }
-
 /* -------------------------------------------------- Halaman Beli & Kartu Produk Responsif Mobile */
 .order-product-card {
   display: flex;
