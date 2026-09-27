@@ -1081,35 +1081,37 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
-   Katalog Grid (4 Kolom di HP & Desktop)
+   Katalog Grid (2 Kolom di HP, 4 Kolom di Tablet & Desktop)
    ========================================================================== */
 .catalog-section-title {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--ink);
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.3rem;
   border-bottom: 2px solid var(--clay);
   display: inline-block;
 }
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 Kolom sejajar di HP & Desktop */
-  gap: 0.4rem;                           /* Jarak rapat di HP */
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(2, 1fr); /* 2 Kolom rapi & nyaman dibaca di HP */
+  gap: 0.85rem;                          /* Jarak antar kartu lebih pas */
+  margin-bottom: 2.5rem;
 }
 
+/* Tampilan 4 kolom sejajar khusus layar Tablet & Desktop */
 @media (min-width: 768px) {
   .catalog-grid {
-    gap: 1.2rem;                        /* Jarak lebih longgar di tablet/desktop */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
 }
 
 .catalog-card {
   background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1123,7 +1125,7 @@ a:focus-visible, button:focus-visible {
 }
 
 .catalog-card-body {
-  padding: 0.4rem;                      /* Padding ringkas untuk 4 kolom HP */
+  padding: 0.75rem;                       /* Padding proporsional untuk 2 kolom */
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -1131,17 +1133,17 @@ a:focus-visible, button:focus-visible {
 
 .catalog-card-body h4 {
   font-family: var(--font-display);
-  font-size: 0.68rem;                    /* Ukuran judul HP */
+  font-size: 0.88rem;                     /* Ukuran judul jelas dan tidak terpotong */
   color: var(--ink);
-  margin-bottom: 0.2rem;
-  line-height: 1.15;
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
 }
 
 .catalog-card-body p {
-  font-size: 0.6rem;                     /* Ukuran deskripsi HP */
+  font-size: 0.75rem;                    /* Deskripsi nyaman dibaca */
   color: var(--ink-soft);
-  line-height: 1.25;
-  margin-bottom: 0.4rem;
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
   flex: 1;
 }
 
@@ -1149,23 +1151,24 @@ a:focus-visible, button:focus-visible {
   align-self: flex-start;
   width: 100%;
   justify-content: center;
-  padding: 0.35rem 0.2rem;
-  font-size: 0.62rem;                    /* Tombol pas di HP */
-  border-radius: 3px;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.78rem;                    /* Ukuran tombol pas & mudah di-klik */
+  border-radius: 4px;
 }
 
+/* Penyesuaian ukuran teks untuk Laptop / Desktop */
 @media (min-width: 768px) {
   .catalog-card-body {
-    padding: 0.8rem;
+    padding: 1rem;
   }
   .catalog-card-body h4 {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
   }
   .catalog-card-body p {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
   }
   .catalog-card-body .btn {
-    padding: 0.55rem 0.8rem;
-    font-size: 0.82rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
   }
 }
