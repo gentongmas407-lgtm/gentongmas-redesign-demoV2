@@ -570,13 +570,29 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 }
 .benefit-list i { color: var(--clay); margin-top: 0.2rem; }
 
-/* -------------------------------------------------- news / article cards */
+/* -------------------------------------------------- news / article cards (DOKUMENTASI) */
 .news-grid { display: grid; gap: 2.5rem; }
 .news-card { display: grid; gap: 1.1rem; }
 @media (min-width: 640px) {
   .news-card { grid-template-columns: 220px 1fr; align-items: start; }
 }
-.news-card img { border-radius: 2px; height: 160px; object-fit: cover; width: 100%; }
+
+.news-media-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f0ebe0;
+}
+
+.news-card img { 
+  border-radius: 8px; 
+  width: 100%; 
+  height: auto; 
+  max-height: 240px; 
+  object-fit: contain; 
+  display: block; 
+}
+
 .news-date { font-size: 0.78rem; color: var(--clay-dark); font-weight: 600; letter-spacing: 0.02em; }
 .news-card h3 { font-size: 1.15rem; margin: 0.4rem 0 0.6rem; }
 .news-card p { font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 0.9rem; }
@@ -602,7 +618,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .side-card img { border-radius: 2px; margin-bottom: 1rem; }
 .side-card p { font-size: 0.88rem; color: var(--ink-soft); }
 
-/* -------------------------------------------------- testimonials */
+/* -------------------------------------------------- testimonials (TESTIMONI) */
 .testi-wrap { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
 .testi-track { display: flex; transition: transform 0.5s ease; }
 .testi-slide { flex: 0 0 100%; padding: 1rem; }
@@ -615,10 +631,26 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .testi-dots button.active { background: var(--clay); }
 
 .testi-grid { display: grid; gap: 1.75rem; grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 640px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) { .testi-grid { grid-template-columns: repeat(4, 1fr); } }
 .testi-grid-item { margin: 0; }
-.testi-grid-img { aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--line); background: var(--white); }
-.testi-grid-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* Pembungkus foto testimoni responsif utuh */
+.testi-grid-img { 
+  width: 100%;
+  overflow: hidden; 
+  border: 1px solid var(--line); 
+  background: var(--white);
+  border-radius: 8px;
+}
+
+.testi-grid-img img { 
+  width: 100%; 
+  height: auto; 
+  max-height: 260px;
+  object-fit: contain; 
+  display: block;
+}
+
 .testi-grid-item figcaption { margin-top: 0.6rem; font-size: 0.85rem; color: var(--ink-soft); }
 .testi-grid-item figcaption strong { display: block; color: var(--ink); font-family: var(--font-display); font-size: 0.95rem; }
 
@@ -828,23 +860,16 @@ a:focus-visible, button:focus-visible {
   margin: 0;
 }
 
-/* Pastikan kontainer gambar responsif */
-.card-image-wrapper, 
-.article-card img, 
-.grid-2col img {
-  width: 100%;
-  height: auto; /* Biarkan tinggi mengikuti rasio asli gambar */
-  max-height: none; /* Hapus batasan tinggi jika ada */
-  object-fit: contain; /* Agar seluruh bagian gambar terlihat tanpa terpotong */
-  display: block;
-}
-
-/* Jika ingin menggunakan rasio aspek yang konsisten di HP tanpa terpotong rata */
+/* -------------------------------------------------- MEDIA QUERIES UNTUK HP (RESPONSIF UTUH) */
 @media (max-width: 768px) {
-  .doc-card img, 
-  .media-card img {
+  .news-card img,
+  .testi-grid-img img {
     height: auto !important;
-    aspect-ratio: 16 / 9; /* Rasio standar foto horizontal HP */
-    object-fit: cover; /* Atau ganti dengan 'contain' jika tidak boleh ada bagian foto terpotong sama sekali */
+    max-height: 220px !important;
+    object-fit: contain !important;
+  }
+  
+  .testi-grid {
+    grid-template-columns: 1fr;
   }
 }
