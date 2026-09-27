@@ -11,7 +11,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Katalog Produk Gentong Mas — Minuman herbal gula aren &amp; habbatussauda pilihan. Tersedia varian sachet dan toples 200gr. Dapatkan harga promo di website resmi.">
+  <meta name="description" content="Katalog Produk Gentong Mas — Minuman herbal gula aren &amp; habbatussauda pilihan. Tersedia varian eceran dan paket hemat 3, 6, hingga 12 box. Dapatkan harga promo di website resmi.">
   <title>Produk Kami — Gentong Mas</title>
   
   <!-- FAVICON PRESISI & TIDAK GEPENG -->
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="styles.css">
   
   <style>
-    /* Styling Tambahan Khusus Logo Sertifikasi Sidebar & Detail Produk */
+    /* Styling khusus Sertifikasi & Specs */
     .cert-badge-group {
       display: flex;
       align-items: center;
@@ -65,7 +65,7 @@
       letter-spacing: 0.03em;
     }
 
-    /* FIX PENATAAN BENEFT LIST AGAR RAPI DI LAYAR KOMPUTER & HP */
+    /* FIX PENATAAN BENEFIT LIST */
     .benefit-list-fix {
       background: #e4e8d8;
       padding: 1.5rem;
@@ -102,6 +102,68 @@
     }
     .benefit-item-text strong {
       color: #295C50;
+    }
+
+    /* GRID KATALOG PRODUK BATCH 4 PER GAMBAR */
+    .catalog-section-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--clay);
+      display: inline-block;
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 560px) {
+      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 992px) {
+      .catalog-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .catalog-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .catalog-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center;
+    }
+    .catalog-card-body {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .catalog-card-body h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+    .catalog-card-body p {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+    .catalog-card-body .btn {
+      align-self: flex-start;
+      width: 100%;
+      justify-content: center;
     }
   </style>
 </head>
@@ -219,7 +281,7 @@
         <!-- Khasiat & Kandungan -->
         <h3 style="margin-top:2rem; font-size:1.6rem;">Khasiat &amp; Kandungan Utama</h3>
         
-        <!-- BLOK KHASIAT LENGKAP RAPI DENGAN FLEXBOX -->
+        <!-- BLOK KHASIAT LENGKAP -->
         <div class="benefit-list-fix">
           <div class="benefit-title">Manfaat Utama Gentong Mas Harian:</div>
           <div class="benefit-items">
@@ -278,6 +340,99 @@
           <a href="beli.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Pesan Gentong Mas</a>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <!-- SECTION KATALOG PRODUK PILIHAN (KATALOG 1 & KATALOG 2) -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow-line">Pilihan Varian Lengkap</div>
+        <h2>Katalog Paket Hemat Gentong Mas</h2>
+        <p>Pilih paket pembelian eceran maupun grosir sesuai kebutuhan kesehatan keluarga Anda.</p>
+      </div>
+
+      <!-- KATALOG BATCH 1 (katalog-1.jpg / Varian 200 Gr) -->
+      <h3 class="catalog-section-title">Varian Kemasan 200 Gr</h3>
+      <div class="catalog-grid">
+        <!-- 1.1 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-1.jpg" alt="Gentong Mas 200 Gr Single">
+          <div class="catalog-card-body">
+            <h4>Gentong Mas 200 Gr</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+        <!-- 1.2 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-1.jpg" alt="Paket Hemat 3 Box Gentong Mas 200 Gr">
+          <div class="catalog-card-body">
+            <h4>Paket Hemat 200 Gr (3 Box)</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+        <!-- 1.3 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-1.jpg" alt="Paket Hemat 6 Box Gentong Mas 200 Gr">
+          <div class="catalog-card-body">
+            <h4>Paket Hemat 200 Gr (6 Box)</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+        <!-- 1.4 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-1.jpg" alt="Paket Hemat 12 Box Gentong Mas 200 Gr">
+          <div class="catalog-card-body">
+            <h4>Paket Hemat 200 Gr (12 Box)</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- KATALOG BATCH 2 (katalog-2.jpg / Varian 250 Gr) -->
+      <h3 class="catalog-section-title">Varian Kemasan 250 Gr</h3>
+      <div class="catalog-grid">
+        <!-- 2.1 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-2.jpg" alt="Gentong Mas 250 Gr Single">
+          <div class="catalog-card-body">
+            <h4>Gentong Mas 250 Gr</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+        <!-- 2.2 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-2.jpg" alt="Paket Hemat 3 Box Gentong Mas 250 Gr">
+          <div class="catalog-card-body">
+            <h4>Paket Hemat 250 Gr (3 Box)</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+        <!-- 2.3 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-2.jpg" alt="Paket Hemat 6 Box Gentong Mas 250 Gr">
+          <div class="catalog-card-body">
+            <h4>Paket Hemat 250 Gr (6 Box)</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+        <!-- 2.4 -->
+        <div class="catalog-card">
+          <img src="gentongmas-images/misc/katalog-2.jpg" alt="Paket Hemat 12 Box Gentong Mas 250 Gr">
+          <div class="catalog-card-body">
+            <h4>Paket Hemat 250 Gr (12 Box)</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
+            <a href="beli.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
