@@ -347,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <script>
-const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw6BLHVOTP3lWjaIbBxijKNwMnmXZK_bmnZjGbdpw7drRUu7lnTtH4-i7wOxe1j8p4j/exec";
+const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwHNQIdcSytzx852bQ_dETHqn5o__Adf7E_7cQMGVKlMCrkqOjc1p1PnVSc_udyOL0/exec";
 const WHATSAPP_NUMBER = "6285724981894";
 
 // Fungsi untuk memilih varian & otomatis scroll halus ke Form Pemesanan
@@ -367,49 +367,51 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const f = e.target;
 
-  // Format data sebagai URLSearchParams agar dapat diterima dengan sempurna oleh Google Apps Script
-  const formData = new URLSearchParams();
-  formData.append("varian", f.varian.value);
-  formData.append("nama", f.nama.value.trim());
-  formData.append("telepon", f.telepon.value.trim());
-  formData.append("jumlah", f.jumlah.value.trim());
-  formData.append("alamat", f.alamat.value.trim());
-  formData.append("desa", f.desa.value.trim());
-  formData.append("kabupaten", f.kabupaten.value.trim());
-  formData.append("kodepos", f.kodepos.value.trim());
-  formData.append("ekspedisi", f.ekspedisi.value);
-  formData.append("tanggal", new Date().toLocaleString("id-ID"));
+  // Susun data JSON sesuai dengan format Apps Script kamu
+  const payload = {
+    tanggal: new Date().toLocaleString("id-ID"),
+    varian: f.varian.value,
+    nama: f.nama.value.trim(),
+    telepon: f.telepon.value.trim(),
+    jumlah: f.jumlah.value.trim(),
+    alamat: f.alamat.value.trim(),
+    desa: f.desa.value.trim(),
+    kabupaten: f.kabupaten.value.trim(),
+    kodepos: f.kodepos.value.trim(),
+    ekspedisi: f.ekspedisi.value,
+    harga: ""
+  };
 
   if (window.dataLayer) {
     window.dataLayer.push({ 
       event: "submit_order_form", 
-      varian: f.varian.value,
-      nama: f.nama.value.trim(),
-      telepon: f.telepon.value.trim()
+      ...payload
     });
   }
 
-  // Kirim data ke Google Sheets Web App tanpa no-cors
+  // Kirim data ke Google Apps Script via JSON
   if (GOOGLE_SHEET_WEBHOOK_URL) {
     fetch(GOOGLE_SHEET_WEBHOOK_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData.toString(),
-    }).catch((err) => console.error("Error sending to sheet:", err));
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+      body: JSON.stringify(payload),
+    }).catch((err) => console.error("Gagal mengirim ke Sheets:", err));
   }
 
-  // Buat format pesan WhatsApp
+  // Buat pesan WhatsApp
   const pesan =
     "Halo, saya mau pesan Gentong Mas 🙏\n\n" +
-    "Varian Produk: " + f.varian.value + "\n" +
-    "Nama Lengkap: " + f.nama.value.trim() + "\n" +
-    "No. Telepon: " + f.telepon.value.trim() + "\n" +
-    "Jumlah: " + f.jumlah.value.trim() + " pcs\n" +
-    "Alamat Pengiriman: " + f.alamat.value.trim() + "\n" +
-    "Desa/Kelurahan: " + f.desa.value.trim() + "\n" +
-    "Kabupaten: " + f.kabupaten.value.trim() + "\n" +
-    "Kode Pos: " + f.kodepos.value.trim() + "\n" +
-    "Ekspedisi: " + f.ekspedisi.value + "\n\n" +
+    "Varian Produk: " + payload.varian + "\n" +
+    "Nama Lengkap: " + payload.nama + "\n" +
+    "No. Telepon: " + payload.telepon + "\n" +
+    "Jumlah: " + payload.jumlah + " pcs\n" +
+    "Alamat Pengiriman: " + payload.alamat + "\n" +
+    "Desa/Kelurahan: " + payload.desa + "\n" +
+    "Kabupaten: " + payload.kabupaten + "\n" +
+    "Kode Pos: " + payload.kodepos + "\n" +
+    "Ekspedisi: " + payload.ekspedisi + "\n\n" +
     "Mohon diproses ya, terima kasih!";
 
   const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(pesan);
