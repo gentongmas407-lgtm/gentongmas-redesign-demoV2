@@ -161,7 +161,7 @@
             });
     });
 
-    // FITUR PENGGENALAN PELANGGAN LAMA (REPEAT ORDER / AUTO-FILL)
+    // FITUR REPEAT ORDER: JIKA PELANGGAN LAMA KLIK OK, LANGSUNG KE HALAMAN PRODUK
     phoneInput.addEventListener('blur', async function() {
         const phone = phoneInput.value.trim();
         if (phone.length < 10) return;
@@ -176,15 +176,14 @@
 
             if (!error && data && data.length > 0) {
                 const customer = data[0];
-                const gunakanData = confirm(`Halo ${customer.full_name}! Kami menemukan riwayat data pengiriman Anda sebelumnya.\n\nGunakan data tersebut untuk pesanan ini?`);
+                const gunakanData = confirm(`Halo ${customer.full_name}! Kami menemukan riwayat data pengiriman Anda sebelumnya.\n\nGunakan data tersebut untuk langsung memilih produk?`);
                 
                 if (gunakanData) {
-                    document.getElementById('fullName').value = customer.full_name;
-                    document.getElementById('addressDetail').value = customer.address_detail || '';
-                    document.getElementById('postalCode').value = customer.postal_code || '';
-                    
+                    // Simpan data lama ke localStorage agar terbaca di produk.html
                     localStorage.setItem('gentongmas_customer', JSON.stringify(customer));
-                    alert('Data nama dan alamat berhasil dimuat otomatis!');
+                    
+                    // Langsung arahkan ke halaman produk tanpa perlu isi form dari awal
+                    window.location.href = 'produk.html';
                 }
             }
         } catch (err) {
@@ -192,7 +191,7 @@
         }
     });
 
-    // Submit ke Supabase
+    // Submit ke Supabase (Untuk pelanggan baru / yang memilih batal dan input manual)
     document.getElementById('customerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
