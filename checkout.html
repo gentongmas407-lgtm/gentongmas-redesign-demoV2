@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success w-100 mt-3">Lanjut Pilih Produk</button>
+        <button type="submit" class="btn btn-success w-100 mt-3" id="submitBtn">Lanjut Pilih Produk</button>
     </form>
 </div>
 
@@ -76,6 +76,7 @@
     const citySelect = document.getElementById('city');
     const districtSelect = document.getElementById('district');
     const subdistrictSelect = document.getElementById('subdistrict');
+    const submitBtn = document.getElementById('submitBtn');
 
     // Helper untuk mereset dan menonaktifkan dropdown
     function resetSelect(selectElement, placeholder) {
@@ -90,7 +91,8 @@
             provinces.forEach(prov => {
                 provinceSelect.innerHTML += `<option value="${prov.id}" data-name="${prov.name}">${prov.name}</option>`;
             });
-        });
+        })
+        .catch(err => console.error('Gagal mengambil data provinsi:', err));
 
     // 2. Event saat Provinsi dipilih
     provinceSelect.addEventListener('change', function() {
@@ -140,9 +142,13 @@
             });
     });
 
-    // Submit Form
-    document.getElementById('customerForm').addEventListener('submit', function(e) {
+    // 5. Submit Form & Kirim Ke API Backend
+    document.getElementById('customerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
+
+        // Indikator Loading
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Menyimpan data...';
 
         const formData = {
             fullName: document.getElementById('fullName').value,
@@ -155,14 +161,38 @@
             postalCode: document.getElementById('postalCode').value
         };
 
-        console.log("Data Pelanggan Berhasil Disimpan:", formData);
-        alert("Data berhasil disimpan! Mengarahkan ke halaman produk...");
-        
-        // Simpan sementara di LocalStorage atau kirim ke Backend API
-        localStorage.setItem('gentongmas_customer', JSON.stringify(formData));
-        
-        // Redirect ke halaman produk (sesuai kebutuhan)
-        // window.location.href = '/produk.html';
+        try {
+            // UBAH URL INI SESUAI ENDPOINT BACKEND API ANDA
+            const API_BACKEND_URL = 'https://api.domainanda.com/api/customers'; 
+
+            const response = await fetch(API_BACKEND_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Simpan juga ke localStorage agar bisa dipakai di halaman selanjutnya
+                localStorage.setItem('gentongmas_customer', JSON.stringify(formData));
+                
+                alert("Data berhasil disimpan! Mengarahkan ke halaman produk...");
+                
+                // Redirect ke halaman produk
+                window.location.href = 'produk.html';
+            } else {
+                alert("Gagal menyimpan data: " + (result.message || 'Terjadi kesalahan pada server'));
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Gagal terhubung ke server API. Pastikan URL API sudah benar.");
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Lanjut Pilih Produk';
+        }
     });
 </script>
 
