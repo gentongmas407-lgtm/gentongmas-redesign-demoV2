@@ -347,7 +347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <script>
-const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwHNQIdcSytzx852bQ_dETHqn5o__Adf7E_7cQMGVKlMCrkqOjc1p1PnVSc_udyOL0/exec";
+const GOOGLE_SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz8arDZu_4AKqtk9j7F8ktyOlpXdvZ1BB6GJw67qcY/exec";
 const WHATSAPP_NUMBER = "6285724981894";
 
 // Fungsi untuk memilih varian & otomatis scroll halus ke Form Pemesanan
@@ -367,7 +367,7 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const f = e.target;
 
-  // Susun data JSON sesuai dengan format Apps Script kamu
+  // Susun data JSON sesuai dengan format Apps Script
   const payload = {
     tanggal: new Date().toLocaleString("id-ID"),
     varian: f.varian.value,
@@ -378,8 +378,7 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
     desa: f.desa.value.trim(),
     kabupaten: f.kabupaten.value.trim(),
     kodepos: f.kodepos.value.trim(),
-    ekspedisi: f.ekspedisi.value,
-    harga: ""
+    ekspedisi: f.ekspedisi.value
   };
 
   if (window.dataLayer) {
@@ -409,7 +408,7 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
     "Jumlah: " + payload.jumlah + " pcs\n" +
     "Alamat Pengiriman: " + payload.alamat + "\n" +
     "Desa/Kelurahan: " + payload.desa + "\n" +
-    "Kabupaten: " + payload.kabupaten + "\n" +
+    "Kabupaten/Kota: " + payload.kabupaten + "\n" +
     "Kode Pos: " + payload.kodepos + "\n" +
     "Ekspedisi: " + payload.ekspedisi + "\n\n" +
     "Mohon diproses ya, terima kasih!";
