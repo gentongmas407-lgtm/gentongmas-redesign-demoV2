@@ -367,50 +367,53 @@ document.getElementById("order-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const f = e.target;
 
-  // Susun data JSON sesuai dengan format Apps Script
-  const payload = {
-    tanggal: new Date().toLocaleString("id-ID"),
-    varian: f.varian.value,
-    nama: f.nama.value.trim(),
-    telepon: f.telepon.value.trim(),
-    jumlah: f.jumlah.value.trim(),
-    alamat: f.alamat.value.trim(),
-    desa: f.desa.value.trim(),
-    kabupaten: f.kabupaten.value.trim(),
-    kodepos: f.kodepos.value.trim(),
-    ekspedisi: f.ekspedisi.value
-  };
+  // Susun data form URL-encoded agar Lolos Bawaan CORS Browser
+  const params = new URLSearchParams();
+  params.append("tanggal", new Date().toLocaleString("id-ID"));
+  params.append("varian", f.varian.value);
+  params.append("nama", f.nama.value.trim());
+  params.append("telepon", f.telepon.value.trim());
+  params.append("jumlah", f.jumlah.value.trim());
+  params.append("alamat", f.alamat.value.trim());
+  params.append("desa", f.desa.value.trim());
+  params.append("kabupaten", f.kabupaten.value.trim());
+  params.append("kodepos", f.kodepos.value.trim());
+  params.append("ekspedisi", f.ekspedisi.value);
 
   if (window.dataLayer) {
     window.dataLayer.push({ 
       event: "submit_order_form", 
-      ...payload
+      varian: f.varian.value,
+      nama: f.nama.value.trim(),
+      telepon: f.telepon.value.trim(),
+      jumlah: f.jumlah.value.trim()
     });
   }
 
-  // Kirim data ke Google Apps Script via JSON
+  // Kirim data ke Google Apps Script tanpa terhalang CORS
   if (GOOGLE_SHEET_WEBHOOK_URL) {
     fetch(GOOGLE_SHEET_WEBHOOK_URL, {
       method: "POST",
+      mode: "no-cors",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8",
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: JSON.stringify(payload),
+      body: params.toString()
     }).catch((err) => console.error("Gagal mengirim ke Sheets:", err));
   }
 
   // Buat pesan WhatsApp
   const pesan =
     "Halo, saya mau pesan Gentong Mas 🙏\n\n" +
-    "Varian Produk: " + payload.varian + "\n" +
-    "Nama Lengkap: " + payload.nama + "\n" +
-    "No. Telepon: " + payload.telepon + "\n" +
-    "Jumlah: " + payload.jumlah + " pcs\n" +
-    "Alamat Pengiriman: " + payload.alamat + "\n" +
-    "Desa/Kelurahan: " + payload.desa + "\n" +
-    "Kabupaten/Kota: " + payload.kabupaten + "\n" +
-    "Kode Pos: " + payload.kodepos + "\n" +
-    "Ekspedisi: " + payload.ekspedisi + "\n\n" +
+    "Varian Produk: " + f.varian.value + "\n" +
+    "Nama Lengkap: " + f.nama.value.trim() + "\n" +
+    "No. Telepon: " + f.telepon.value.trim() + "\n" +
+    "Jumlah: " + f.jumlah.value.trim() + " pcs\n" +
+    "Alamat Pengiriman: " + f.alamat.value.trim() + "\n" +
+    "Desa/Kelurahan: " + f.desa.value.trim() + "\n" +
+    "Kabupaten/Kota: " + f.kabupaten.value.trim() + "\n" +
+    "Kode Pos: " + f.kodepos.value.trim() + "\n" +
+    "Ekspedisi: " + f.ekspedisi.value + "\n\n" +
     "Mohon diproses ya, terima kasih!";
 
   const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(pesan);
