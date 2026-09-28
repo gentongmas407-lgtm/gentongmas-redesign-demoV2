@@ -6,6 +6,8 @@
     <title>Form Data Pelanggan - Gentong Mas</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Supabase JS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-light p-4">
 
@@ -70,6 +72,12 @@
 
 <!-- JavaScript Logic -->
 <script>
+    // 1. INISIALISASI SUPABASE CLIENT
+    const SUPABASE_URL = 'https://rbmnglczobisuzmyeesf.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJibW5nbGN6b2Jpc3V6bXllZXNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2MDY4ODgsImV4cCI6MjEwNjE4Mjg4OH0.E_XJNgFcJpk1nW_gerUCD-QpFGsEFlyG3fLDJ8-fLpg';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // 2. LOGIKA CASCADING SELECT WILAYAH INDONESIA
     const API_BASE_URL = 'https://www.emsifa.com/api-wilayah-indonesia/api';
 
     const provinceSelect = document.getElementById('province');
@@ -78,13 +86,13 @@
     const subdistrictSelect = document.getElementById('subdistrict');
     const submitBtn = document.getElementById('submitBtn');
 
-    // Helper untuk mereset dan menonaktifkan dropdown
+    // Helper Reset Select
     function resetSelect(selectElement, placeholder) {
         selectElement.innerHTML = `<option value="" selected disabled>${placeholder}</option>`;
         selectElement.disabled = true;
     }
 
-    // 1. Fetch Daftar Provinsi
+    // Load Provinsi
     fetch(`${API_BASE_URL}/provinces.json`)
         .then(response => response.json())
         .then(provinces => {
@@ -94,7 +102,7 @@
         })
         .catch(err => console.error('Gagal mengambil data provinsi:', err));
 
-    // 2. Event saat Provinsi dipilih
+    // Event Pilih Provinsi
     provinceSelect.addEventListener('change', function() {
         const provId = this.value;
         resetSelect(citySelect, 'Pilih Kabupaten/Kota...');
@@ -111,7 +119,7 @@
             });
     });
 
-    // 3. Event saat Kota/Kabupaten dipilih
+    // Event Pilih Kota/Kabupaten
     citySelect.addEventListener('change', function() {
         const cityId = this.value;
         resetSelect(districtSelect, 'Pilih Kecamatan...');
@@ -127,7 +135,7 @@
             });
     });
 
-    // 4. Event saat Kecamatan dipilih
+    // Event Pilih Kecamatan
     districtSelect.addEventListener('change', function() {
         const districtId = this.value;
         resetSelect(subdistrictSelect, 'Pilih Desa/Kelurahan...');
@@ -142,53 +150,45 @@
             });
     });
 
-    // 5. Submit Form & Kirim Ke API Backend
+    // 3. SUBMIT FORM & SIMPAN LANGSUNG KE SUPABASE DATABASE
     document.getElementById('customerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Indikator Loading
         submitBtn.disabled = true;
         submitBtn.innerText = 'Menyimpan data...';
 
-        const formData = {
-            fullName: document.getElementById('fullName').value,
-            phoneNumber: document.getElementById('phoneNumber').value,
+        const customerData = {
+            full_name: document.getElementById('fullName').value,
+            phone_number: document.getElementById('phoneNumber').value,
             province: provinceSelect.options[provinceSelect.selectedIndex].getAttribute('data-name'),
             city: citySelect.options[citySelect.selectedIndex].getAttribute('data-name'),
             district: districtSelect.options[districtSelect.selectedIndex].getAttribute('data-name'),
             subdistrict: subdistrictSelect.options[subdistrictSelect.selectedIndex].getAttribute('data-name'),
-            addressDetail: document.getElementById('addressDetail').value,
-            postalCode: document.getElementById('postalCode').value
+            address_detail: document.getElementById('addressDetail').value,
+            postal_code: document.getElementById('postalCode').value
         };
 
         try {
-            // UBAH URL INI SESUAI ENDPOINT BACKEND API ANDA
-            const API_BACKEND_URL = 'https://api.domainanda.com/api/customers'; 
+            // Masukkan data ke tabel 'customers' di Supabase
+            const { data, error } = await supabaseClient
+                .from('customers')
+                .insert([customerData]);
 
-            const response = await fetch(API_BACKEND_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                // Simpan juga ke localStorage agar bisa dipakai di halaman selanjutnya
-                localStorage.setItem('gentongmas_customer', JSON.stringify(formData));
+            if (error) {
+                console.error('Supabase Error:', error);
+                alert('Gagal menyimpan data: ' + error.message);
+            } else {
+                // Simpan juga ke LocalStorage untuk kemudahan akses di halaman produk/order
+                localStorage.setItem('gentongmas_customer', JSON.stringify(customerData));
                 
-                alert("Data berhasil disimpan! Mengarahkan ke halaman produk...");
+                alert('Data pengiriman berhasil tersimpan!');
                 
                 // Redirect ke halaman produk
                 window.location.href = 'produk.html';
-            } else {
-                alert("Gagal menyimpan data: " + (result.message || 'Terjadi kesalahan pada server'));
             }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            alert("Gagal terhubung ke server API. Pastikan URL API sudah benar.");
+        } catch (err) {
+            console.error('System Error:', err);
+            alert('Terjadi kesalahan sistem/koneksi.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerText = 'Lanjut Pilih Produk';
