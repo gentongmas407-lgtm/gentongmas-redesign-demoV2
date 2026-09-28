@@ -903,6 +903,27 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   border: 1px solid var(--line);
   padding: 1.25rem;
   border-radius: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Membatasi gambar di dalam sidebar agar tidak membesar tanpa batas */
+.side-card img,
+.sidebar img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Membatasi tinggi logo sertifikasi di dalam sidebar */
+.side-card img[src*="logo-sertifikasi"],
+.side-card img[src*="sertifikat"] {
+  max-height: 52px;
+  width: auto;
+  margin: 0.4rem auto;
+  object-fit: contain;
 }
 
 .team-grid {
@@ -971,15 +992,20 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   border: 1px solid var(--line);
 }
 
-/* -------------------------------------------------- FAQ ACCORDION */
+/* -------------------------------------------------- FAQ ACCORDION & GRID 2-COLUMN FIX */
 .grid-2col {
   display: grid;
   gap: 2rem;
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 768px) {
-  .grid-2col { grid-template-columns: 1fr 2fr; gap: 3rem; }
+/* Mengunci lebar sidebar kanan pada 340px agar tidak membesar 50% di layar laptop */
+@media (min-width: 850px) {
+  .grid-2col {
+    grid-template-columns: 1fr 340px;
+    gap: 2.5rem;
+    align-items: start;
+  }
 }
 
 .faq-item {
