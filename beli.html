@@ -366,43 +366,50 @@ function pilihVarian(namaVarian) {
 document.getElementById("order-form").addEventListener("submit", function (e) {
   e.preventDefault();
   const f = e.target;
-  const data = {
-    varian: f.varian.value,
-    nama: f.nama.value.trim(),
-    telepon: f.telepon.value.trim(),
-    jumlah: f.jumlah.value.trim(),
-    alamat: f.alamat.value.trim(),
-    desa: f.desa.value.trim(),
-    kabupaten: f.kabupaten.value.trim(),
-    kodepos: f.kodepos.value.trim(),
-    ekspedisi: f.ekspedisi.value,
-    tanggal: new Date().toLocaleString("id-ID"),
-  };
+
+  // Format data sebagai URLSearchParams agar dapat diterima dengan sempurna oleh Google Apps Script
+  const formData = new URLSearchParams();
+  formData.append("varian", f.varian.value);
+  formData.append("nama", f.nama.value.trim());
+  formData.append("telepon", f.telepon.value.trim());
+  formData.append("jumlah", f.jumlah.value.trim());
+  formData.append("alamat", f.alamat.value.trim());
+  formData.append("desa", f.desa.value.trim());
+  formData.append("kabupaten", f.kabupaten.value.trim());
+  formData.append("kodepos", f.kodepos.value.trim());
+  formData.append("ekspedisi", f.ekspedisi.value);
+  formData.append("tanggal", new Date().toLocaleString("id-ID"));
 
   if (window.dataLayer) {
-    window.dataLayer.push({ event: "submit_order_form", ...data });
+    window.dataLayer.push({ 
+      event: "submit_order_form", 
+      varian: f.varian.value,
+      nama: f.nama.value.trim(),
+      telepon: f.telepon.value.trim()
+    });
   }
 
+  // Kirim data ke Google Sheets Web App tanpa no-cors
   if (GOOGLE_SHEET_WEBHOOK_URL) {
     fetch(GOOGLE_SHEET_WEBHOOK_URL, {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).catch(() => {});
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+    }).catch((err) => console.error("Error sending to sheet:", err));
   }
 
+  // Buat format pesan WhatsApp
   const pesan =
     "Halo, saya mau pesan Gentong Mas 🙏\n\n" +
-    "Varian Produk: " + data.varian + "\n" +
-    "Nama Lengkap: " + data.nama + "\n" +
-    "No. Telepon: " + data.telepon + "\n" +
-    "Jumlah: " + data.jumlah + " pcs\n" +
-    "Alamat Pengiriman: " + data.alamat + "\n" +
-    "Desa/Kelurahan: " + data.desa + "\n" +
-    "Kabupaten: " + data.kabupaten + "\n" +
-    "Kode Pos: " + data.kodepos + "\n" +
-    "Ekspedisi: " + data.ekspedisi + "\n\n" +
+    "Varian Produk: " + f.varian.value + "\n" +
+    "Nama Lengkap: " + f.nama.value.trim() + "\n" +
+    "No. Telepon: " + f.telepon.value.trim() + "\n" +
+    "Jumlah: " + f.jumlah.value.trim() + " pcs\n" +
+    "Alamat Pengiriman: " + f.alamat.value.trim() + "\n" +
+    "Desa/Kelurahan: " + f.desa.value.trim() + "\n" +
+    "Kabupaten: " + f.kabupaten.value.trim() + "\n" +
+    "Kode Pos: " + f.kodepos.value.trim() + "\n" +
+    "Ekspedisi: " + f.ekspedisi.value + "\n\n" +
     "Mohon diproses ya, terima kasih!";
 
   const waUrl = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(pesan);
