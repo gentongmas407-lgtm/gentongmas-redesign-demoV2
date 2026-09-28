@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Pelanggan - Gentong Mas</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-4">
+
+<div class="container bg-white p-4 rounded shadow-sm" style="max-width: 600px;">
+    <h3 class="mb-4 text-center">Data Pengiriman Gentong Mas</h3>
+    
+    <form id="customerForm">
+        <!-- Data Diri -->
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="fullName" required placeholder="Contoh: Budi Santoso">
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">No. WhatsApp</label>
+            <input type="tel" class="form-control" id="phoneNumber" required placeholder="Contoh: 08123456789">
+        </div>
+
+        <!-- Cascading Select Alamat -->
+        <div class="mb-3">
+            <label for="province" class="form-label">Provinsi</label>
+            <select class="form-select" id="province" required>
+                <option value="" selected disabled>Pilih Provinsi...</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="city" class="form-label">Kabupaten / Kota</label>
+            <select class="form-select" id="city" required disabled>
+                <option value="" selected disabled>Pilih Kabupaten/Kota...</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="district" class="form-label">Kecamatan</label>
+            <select class="form-select" id="district" required disabled>
+                <option value="" selected disabled>Pilih Kecamatan...</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="subdistrict" class="form-label">Desa / Kelurahan</label>
+            <select class="form-select" id="subdistrict" required disabled>
+                <option value="" selected disabled>Pilih Desa/Kelurahan...</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 mb-3">
+                <label for="addressDetail" class="form-label">Alamat Lengkap (Jalan, RT/RW, No. Rumah)</label>
+                <textarea class="form-control" id="addressDetail" rows="2" required placeholder="Jl. Mawar No. 12, RT 01/RW 02"></textarea>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="postalCode" class="form-label">Kode Pos</label>
+                <input type="text" class="form-control" id="postalCode" required placeholder="45123">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100 mt-3">Lanjut Pilih Produk</button>
+    </form>
+</div>
+
+<!-- JavaScript Logic -->
+<script>
+    const API_BASE_URL = 'https://www.emsifa.com/api-wilayah-indonesia/api';
+
+    const provinceSelect = document.getElementById('province');
+    const citySelect = document.getElementById('city');
+    const districtSelect = document.getElementById('district');
+    const subdistrictSelect = document.getElementById('subdistrict');
+
+    // Helper untuk mereset dan menonaktifkan dropdown
+    function resetSelect(selectElement, placeholder) {
+        selectElement.innerHTML = `<option value="" selected disabled>${placeholder}</option>`;
+        selectElement.disabled = true;
+    }
+
+    // 1. Fetch Daftar Provinsi
+    fetch(`${API_BASE_URL}/provinces.json`)
+        .then(response => response.json())
+        .then(provinces => {
+            provinces.forEach(prov => {
+                provinceSelect.innerHTML += `<option value="${prov.id}" data-name="${prov.name}">${prov.name}</option>`;
+            });
+        });
+
+    // 2. Event saat Provinsi dipilih
+    provinceSelect.addEventListener('change', function() {
+        const provId = this.value;
+        resetSelect(citySelect, 'Pilih Kabupaten/Kota...');
+        resetSelect(districtSelect, 'Pilih Kecamatan...');
+        resetSelect(subdistrictSelect, 'Pilih Desa/Kelurahan...');
+
+        fetch(`${API_BASE_URL}/regencies/${provId}.json`)
+            .then(response => response.json())
+            .then(cities => {
+                citySelect.disabled = false;
+                cities.forEach(city => {
+                    citySelect.innerHTML += `<option value="${city.id}" data-name="${city.name}">${city.name}</option>`;
+                });
+            });
+    });
+
+    // 3. Event saat Kota/Kabupaten dipilih
+    citySelect.addEventListener('change', function() {
+        const cityId = this.value;
+        resetSelect(districtSelect, 'Pilih Kecamatan...');
+        resetSelect(subdistrictSelect, 'Pilih Desa/Kelurahan...');
+
+        fetch(`${API_BASE_URL}/districts/${cityId}.json`)
+            .then(response => response.json())
+            .then(districts => {
+                districtSelect.disabled = false;
+                districts.forEach(dist => {
+                    districtSelect.innerHTML += `<option value="${dist.id}" data-name="${dist.name}">${dist.name}</option>`;
+                });
+            });
+    });
+
+    // 4. Event saat Kecamatan dipilih
+    districtSelect.addEventListener('change', function() {
+        const districtId = this.value;
+        resetSelect(subdistrictSelect, 'Pilih Desa/Kelurahan...');
+
+        fetch(`${API_BASE_URL}/villages/${districtId}.json`)
+            .then(response => response.json())
+            .then(villages => {
+                subdistrictSelect.disabled = false;
+                villages.forEach(village => {
+                    subdistrictSelect.innerHTML += `<option value="${village.id}" data-name="${village.name}">${village.name}</option>`;
+                });
+            });
+    });
+
+    // Submit Form
+    document.getElementById('customerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+            fullName: document.getElementById('fullName').value,
+            phoneNumber: document.getElementById('phoneNumber').value,
+            province: provinceSelect.options[provinceSelect.selectedIndex].getAttribute('data-name'),
+            city: citySelect.options[citySelect.selectedIndex].getAttribute('data-name'),
+            district: districtSelect.options[districtSelect.selectedIndex].getAttribute('data-name'),
+            subdistrict: subdistrictSelect.options[subdistrictSelect.selectedIndex].getAttribute('data-name'),
+            addressDetail: document.getElementById('addressDetail').value,
+            postalCode: document.getElementById('postalCode').value
+        };
+
+        console.log("Data Pelanggan Berhasil Disimpan:", formData);
+        alert("Data berhasil disimpan! Mengarahkan ke halaman produk...");
+        
+        // Simpan sementara di LocalStorage atau kirim ke Backend API
+        localStorage.setItem('gentongmas_customer', JSON.stringify(formData));
+        
+        // Redirect ke halaman produk (sesuai kebutuhan)
+        // window.location.href = '/produk.html';
+    });
+</script>
+
+</body>
+</html>
