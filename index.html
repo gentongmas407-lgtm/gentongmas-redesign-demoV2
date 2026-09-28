@@ -36,13 +36,14 @@
     <form id="customerForm">
         <!-- Data Diri -->
         <div class="mb-3">
-            <label for="fullName" class="form-label fw-semibold">Nama Lengkap</label>
-            <input type="text" class="form-control" id="fullName" required placeholder="Contoh: Muhammad Aliv Musayar">
+            <label for="phoneNumber" class="form-label fw-semibold">No. WhatsApp</label>
+            <input type="tel" class="form-control" id="phoneNumber" required placeholder="Contoh: 08123456789">
+            <div class="form-text text-muted small">Masukkan No. WhatsApp untuk memuat otomatis data alamat jika pernah memesan sebelumnya.</div>
         </div>
 
         <div class="mb-3">
-            <label for="phoneNumber" class="form-label fw-semibold">No. WhatsApp</label>
-            <input type="tel" class="form-control" id="phoneNumber" required placeholder="Contoh: 08123456789">
+            <label for="fullName" class="form-label fw-semibold">Nama Lengkap</label>
+            <input type="text" class="form-control" id="fullName" required placeholder="Contoh: Muhammad Aliv Musayar">
         </div>
 
         <!-- Cascading Select Alamat -->
@@ -89,10 +90,10 @@
     </form>
 </div>
 
-<!-- JavaScript Logic Supabase & API Wilayah -->
+<!-- JavaScript Logic Supabase, API Wilayah, & Repeat Order Detection -->
 <script>
     const SUPABASE_URL = 'https://rbmnglczobisuzmyeesf.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJibW5nbGN6b2Jpc3V6bXllZXNmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2MDY4ODgsImV4cCI6MjEwNjE4Mjg4OH0.E_XJNgFcJpk1nW_gerUCD-QpFGsEFlyG3fLDJ8-fLpg';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJibW5nbGN6b2Jpc3V6bXllZXNmIiwicm9sZSI6InJub24iLCJpYXQiOjE3OTA2MDY4ODgsImV4cCI6MjEwNjE4Mjg4OH0.E_XJNgFcJpk1nW_gerUCD-QpFGsEFlyG3fLDJ8-fLpg';
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const API_BASE_URL = 'https://www.emsifa.com/api-wilayah-indonesia/api';
@@ -102,6 +103,7 @@
     const districtSelect = document.getElementById('district');
     const subdistrictSelect = document.getElementById('subdistrict');
     const submitBtn = document.getElementById('submitBtn');
+    const phoneInput = document.getElementById('phoneNumber');
 
     function resetSelect(selectElement, placeholder) {
         selectElement.innerHTML = `<option value="" selected disabled>${placeholder}</option>`;
@@ -159,6 +161,37 @@
             });
     });
 
+    // FITUR PENGGENALAN PELANGGAN LAMA (REPEAT ORDER / AUTO-FILL)
+    phoneInput.addEventListener('blur', async function() {
+        const phone = phoneInput.value.trim();
+        if (phone.length < 10) return;
+
+        try {
+            const { data, error } = await supabaseClient
+                .from('customers')
+                .select('*')
+                .eq('phone_number', phone)
+                .order('created_at', { ascending: false })
+                .limit(1);
+
+            if (!error && data && data.length > 0) {
+                const customer = data[0];
+                const gunakanData = confirm(`Halo ${customer.full_name}! Kami menemukan riwayat data pengiriman Anda sebelumnya.\n\nGunakan data tersebut untuk pesanan ini?`);
+                
+                if (gunakanData) {
+                    document.getElementById('fullName').value = customer.full_name;
+                    document.getElementById('addressDetail').value = customer.address_detail || '';
+                    document.getElementById('postalCode').value = customer.postal_code || '';
+                    
+                    localStorage.setItem('gentongmas_customer', JSON.stringify(customer));
+                    alert('Data nama dan alamat berhasil dimuat otomatis!');
+                }
+            }
+        } catch (err) {
+            console.error('Gagal mengecek pelanggan lama:', err);
+        }
+    });
+
     // Submit ke Supabase
     document.getElementById('customerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -168,7 +201,7 @@
 
         const customerData = {
             full_name: document.getElementById('fullName').value,
-            phone_number: document.getElementById('phoneNumber').value,
+            phone_number: phoneInput.value,
             province: provinceSelect.options[provinceSelect.selectedIndex].getAttribute('data-name'),
             city: citySelect.options[citySelect.selectedIndex].getAttribute('data-name'),
             district: districtSelect.options[districtSelect.selectedIndex].getAttribute('data-name'),
