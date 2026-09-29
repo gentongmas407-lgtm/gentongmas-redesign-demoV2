@@ -211,6 +211,10 @@
         submitBtn.disabled = true;
         submitBtn.innerText = 'Menyimpan data...';
 
+        // Mendapatkan waktu lokal WIB (UTC + 7 jam)
+        const now = new Date();
+        const wibTime = new Date(now.getTime() + (7 * 60 * 60 * 1000)).toISOString().replace('Z', '+07:00');
+
         const customerData = {
             full_name: document.getElementById('fullName').value,
             phone_number: phoneInput.value,
@@ -219,7 +223,8 @@
             district: districtSelect.options[districtSelect.selectedIndex].getAttribute('data-name'),
             subdistrict: subdistrictSelect.options[subdistrictSelect.selectedIndex].getAttribute('data-name'),
             address_detail: document.getElementById('addressDetail').value,
-            postal_code: document.getElementById('postalCode').value
+            postal_code: document.getElementById('postalCode').value,
+            created_at: wibTime // Memaksa kolom created_at terisi waktu WIB
         };
 
         try {
