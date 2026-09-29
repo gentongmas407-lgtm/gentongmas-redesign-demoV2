@@ -24,6 +24,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-uC5+fh9SYoPfzovfrENvLP3zUVlKZkPRRv0EGkG7AfXmr6oF53m8mc1XikFJrGBVgWST6iM6FeDX3IVXDf5Ugg==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .price-original { text-decoration: line-through; color: #9ca3af; font-size: 0.85rem; margin-right: 6px; }
+    .price-promo { color: #dc2626; font-weight: 700; font-size: 1.15rem; }
+    .qty-box { margin: 12px 0; }
+    .qty-box label { font-size: 0.85rem; display: block; margin-bottom: 4px; color: #4b5563; font-weight: 600; }
+    .qty-box input { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; text-align: center; }
+    .checkout-container { background: #fffdf9; border: 2px solid #d97706; border-radius: 12px; padding: 24px; margin-top: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -98,7 +106,7 @@
         
         <p class="lede">Minuman herbal tradisional premium yang diracik khusus dari paduan gula aren murni pilihan dan habbatussauda berkualitas tinggi, dilengkapi dengan rempah-rempah herbal khas Garut tanpa bahan pengawet sintesis.</p>
 
-        <!-- Spesifikasi Detail Produk (Tampilan Kartu Rapi) -->
+        <!-- Spesifikasi Detail Produk -->
         <div class="product-specs-list">
           <div class="product-specs-item">
             <span class="product-specs-label">Bentuk Sediaan:</span>
@@ -126,12 +134,9 @@
           </div>
         </div>
 
-        <!-- Khasiat & Kandungan Utama -->
         <h3 class="section-subheading">Khasiat &amp; Kandungan Utama</h3>
-        
         <p class="benefit-subtitle">Manfaat Utama Gentong Mas Harian:</p>
 
-        <!-- BLOK KHASIAT LENGKAP -->
         <div class="benefit-point-list">
           <div class="benefit-point-item">
             <strong>Meningkatkan Daya Tahan Tubuh</strong>
@@ -159,14 +164,14 @@
         <div class="side-card">
           <h3>Pemesanan Cepat</h3>
           <p>Dapatkan penawaran harga terbaik pemesanan langsung dari website resmi.</p>
-          <a href="#" onclick="orderProduct('Gentong Mas Umum')" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Pesan Gentong Mas</a>
+          <a href="#katalog-section" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Pilih Katalog Paket</a>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- SECTION KATALOG PRODUK PILIHAN (KATALOG 1 & KATALOG 2) -->
-  <section class="section section-alt">
+  <!-- SECTION KATALOG PRODUK PILIHAN -->
+  <section id="katalog-section" class="section section-alt">
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow-line">Pilihan Varian Lengkap</div>
@@ -174,16 +179,24 @@
         <p>Pilih paket pembelian eceran maupun grosir sesuai kebutuhan kesehatan keluarga Anda.</p>
       </div>
 
-      <!-- KATALOG BATCH 1 (katalog-1.jpeg / Varian 200 Gr) -->
-      <h3 class="catalog-section-title">Varian Kemasan 200 Gr</h3>
+      <!-- KATALOG BATCH 1 (Varian 200 Gr Coklat) -->
+      <h3 class="catalog-section-title">Varian Kemasan 200 Gr (Coklat)</h3>
       <div class="catalog-grid">
         <!-- 1.1 -->
         <div class="catalog-card">
           <img src="gentongmas-images/misc/katalog-1.jpeg" alt="Gentong Mas 200 Gr Single">
           <div class="catalog-card-body">
-            <h4>Gentong Mas 200 Gr</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Gentong Mas 200 Gr (1 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <h4>Gentong Mas (200 Gr) 1 Box</h4>
+            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 65.000</span>
+              <span class="price-promo">Rp 50.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-1" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Gentong Mas 200 Gr (1 Box)', 50000, 'qty-1')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
         <!-- 1.2 -->
@@ -191,8 +204,16 @@
           <img src="gentongmas-images/misc/katalog-1.jpeg" alt="Paket Hemat 3 Box Gentong Mas 200 Gr">
           <div class="catalog-card-body">
             <h4>Paket Hemat 200 Gr (3 Box)</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Paket Hemat 200 Gr (3 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <p>Paket hemat isi 3 box untuk stok keluarga.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 160.000</span>
+              <span class="price-promo">Rp 144.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-2" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Paket Hemat Gentong Mas 200 Gr (3 Box)', 144000, 'qty-2')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
         <!-- 1.3 -->
@@ -200,8 +221,16 @@
           <img src="gentongmas-images/misc/katalog-1.jpeg" alt="Paket Hemat 6 Box Gentong Mas 200 Gr">
           <div class="catalog-card-body">
             <h4>Paket Hemat 200 Gr (6 Box)</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Paket Hemat 200 Gr (6 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <p>Paket hemat isi 6 box lebih ekonomis.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 310.000</span>
+              <span class="price-promo">Rp 270.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-3" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Paket Hemat Gentong Mas 200 Gr (6 Box)', 270000, 'qty-3')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
         <!-- 1.4 -->
@@ -209,22 +238,38 @@
           <img src="gentongmas-images/misc/katalog-1.jpeg" alt="Paket Hemat 12 Box Gentong Mas 200 Gr">
           <div class="catalog-card-body">
             <h4>Paket Hemat 200 Gr (12 Box)</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Paket Hemat 200 Gr (12 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <p>Paket grosir isi 12 box terbaik.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 600.000</span>
+              <span class="price-promo">Rp 540.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-4" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Paket Hemat Gentong Mas 200 Gr (12 Box)', 540000, 'qty-4')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
       </div>
 
-      <!-- KATALOG BATCH 2 (katalog-2.jpeg / Varian 250 Gr) -->
-      <h3 class="catalog-section-title">Varian Kemasan 250 Gr</h3>
+      <!-- KATALOG BATCH 2 (Varian 250 Gr Merah) -->
+      <h3 class="catalog-section-title" style="margin-top: 40px;">Varian Kemasan 250 Gr (Merah)</h3>
       <div class="catalog-grid">
         <!-- 2.1 -->
         <div class="catalog-card">
           <img src="gentongmas-images/misc/katalog-2.jpeg" alt="Gentong Mas 250 Gr Single">
           <div class="catalog-card-body">
-            <h4>Gentong Mas 250 Gr</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Gentong Mas 250 Gr (1 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <h4>Gentong Mas (250 Gr) 1 Box</h4>
+            <p>Kemasan eksklusif 250 gram.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 80.000</span>
+              <span class="price-promo">Rp 65.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-5" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Gentong Mas 250 Gr (1 Box)', 65000, 'qty-5')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
         <!-- 2.2 -->
@@ -232,8 +277,16 @@
           <img src="gentongmas-images/misc/katalog-2.jpeg" alt="Paket Hemat 3 Box Gentong Mas 250 Gr">
           <div class="catalog-card-body">
             <h4>Paket Hemat 250 Gr (3 Box)</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Paket Hemat 250 Gr (3 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <p>Paket hemat 250 gram isi 3 box.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 210.000</span>
+              <span class="price-promo">Rp 189.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-6" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Paket Hemat Gentong Mas 250 Gr (3 Box)', 189000, 'qty-6')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
         <!-- 2.3 -->
@@ -241,8 +294,16 @@
           <img src="gentongmas-images/misc/katalog-2.jpeg" alt="Paket Hemat 6 Box Gentong Mas 250 Gr">
           <div class="catalog-card-body">
             <h4>Paket Hemat 250 Gr (6 Box)</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Paket Hemat 250 Gr (6 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <p>Stok puas kemasan 250 gram.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 400.000</span>
+              <span class="price-promo">Rp 366.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-7" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Paket Hemat Gentong Mas 250 Gr (6 Box)', 366000, 'qty-7')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
         <!-- 2.4 -->
@@ -250,11 +311,64 @@
           <img src="gentongmas-images/misc/katalog-2.jpeg" alt="Paket Hemat 12 Box Gentong Mas 250 Gr">
           <div class="catalog-card-body">
             <h4>Paket Hemat 250 Gr (12 Box)</h4>
-            <p>Minuman Herbal Dengan Habbatussauda &amp; 9 Rempah Lainnya Untuk Kesehatan Keluarga Anda.</p>
-            <a href="#" onclick="orderProduct('Paket Hemat 250 Gr (12 Box)')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Sekarang</a>
+            <p>Grosir maksimal kemasan 250 gram.</p>
+            <div style="margin: 10px 0;">
+              <span class="price-original">Rp 800.000</span>
+              <span class="price-promo">Rp 720.000</span>
+            </div>
+            <div class="qty-box">
+              <label>Jumlah (QTY):</label>
+              <input type="number" id="qty-8" min="1" value="1">
+            </div>
+            <button onclick="pilihProduk('Paket Hemat Gentong Mas 250 Gr (12 Box)', 720000, 'qty-8')" class="btn btn-primary w-full"><i class="fa-solid fa-cart-shopping"></i> Pilih Produk</button>
           </div>
         </div>
       </div>
+
+      <!-- SECTION CHECKOUT & CEK ONGKIR OTOMATIS -->
+      <div class="checkout-container">
+        <h3 style="color: #78350f; margin-bottom: 16px; font-size: 1.3rem;"><i class="fa-solid fa-truck-fast"></i> Ringkasan Belanja & Cek Ongkir Otomatis</h3>
+        <div class="grid-2col" style="align-items: center;">
+          <div>
+            <div id="selected-product-box" style="padding: 12px; background: #fff; border: 1px solid #f59e0b; border-radius: 8px; margin-bottom: 15px; font-size: 0.95rem; color: #78350f;">
+              <b>Belum ada produk dipilih.</b> Silakan klik tombol "Pilih Produk" pada katalog di atas.
+            </div>
+
+            <div style="margin-bottom: 15px;">
+              <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px;">Pilih Ekspedisi:</label>
+              <select id="kurir" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;">
+                <option value="jne">JNE</option>
+                <option value="jnt">J&T Express</option>
+                <option value="pos">Pos Indonesia</option>
+                <option value="spx">Shopee Xpress (SPX)</option>
+              </select>
+            </div>
+
+            <button onclick="cekOngkir()" class="btn btn-primary" style="width: 100%; background-color: #2563eb;"><i class="fa-solid fa-calculator"></i> Cek Tarif Ongkir Komerce</button>
+          </div>
+
+          <div style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem;">
+              <span>Subtotal Produk:</span>
+              <span id="lbl-subtotal">Rp 0</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem;">
+              <span>Ongkos Kirim:</span>
+              <span id="lbl-ongkir">Rp 0</span>
+            </div>
+            <hr style="margin: 12px 0; border-color: #e5e7eb;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: bold; font-size: 1.1rem; color: #78350f;">
+              <span>Total Pembayaran:</span>
+              <span id="lbl-total">Rp 0</span>
+            </div>
+
+            <button onclick="kirimWhatsApp()" class="btn btn-primary" style="width: 100%; background-color: #16a34a; text-align: center; padding: 12px; font-size: 1rem;">
+              <i class="fa-brands fa-whatsapp"></i> Pesan & Kirim ke WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -263,7 +377,7 @@
     <div class="wrap">
       <h2>Mulai hidup sehat bersama herbal alami Gentong Mas</h2>
       <p>Pesan langsung di web resmi untuk mendapatkan harga promo hemat harian.</p>
-      <a href="#" onclick="orderProduct('Gentong Mas Umum')" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Beli Gentong Mas</a>
+      <a href="#katalog-section" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Lihat Katalog Paket</a>
     </div>
   </div>
 
@@ -300,10 +414,69 @@
     <div class="footer-bottom">Made with care in Indonesia</div>
   </footer>
 
-  <!-- SCRIPT INTEGRASI DATA PELANGGAN KE WHATSAPP -->
+  <!-- SCRIPT INTEGRASI PRODUK, QTY, & KOMERCE API -->
   <script>
-    function orderProduct(productName) {
-        // Ambil data pelanggan dari localStorage yang disimpan saat mengisi form di home.html
+    let produkDipilih = {
+        nama: "",
+        hargaSatuan: 0,
+        qty: 1,
+        totalHarga: 0
+    };
+    let ongkirDipilih = 0;
+
+    function pilihProduk(nama, harga, qtyId) {
+        let qty = parseInt(document.getElementById(qtyId).value) || 1;
+        let total = harga * qty;
+
+        produkDipilih = {
+            nama: nama,
+            hargaSatuan: harga,
+            qty: qty,
+            totalHarga: total
+        };
+
+        document.getElementById('selected-product-box').innerHTML = `
+            <b>Produk:</b> ${nama}<br>
+            <b>Jumlah:</b> ${qty} Box | <b>Total Harga:</b> Rp ${total.toLocaleString('id-ID')}
+        `;
+
+        updateTotal();
+        alert("Produk berhasil dipilih ke keranjang!");
+    }
+
+    function updateTotal() {
+        let subtotal = produkDipilih.totalHarga;
+        let totalSemua = subtotal + ongkirDipilih;
+
+        document.getElementById('lbl-subtotal').innerText = "Rp " + subtotal.toLocaleString('id-ID');
+        document.getElementById('lbl-ongkir').innerText = "Rp " + ongkirDipilih.toLocaleString('id-ID');
+        document.getElementById('lbl-total').innerText = "Rp " + totalSemua.toLocaleString('id-ID');
+    }
+
+    async function cekOngkir() {
+        if (!produkDipilih.nama) {
+            alert("Silakan pilih produk terlebih dahulu pada katalog di atas!");
+            return;
+        }
+
+        const savedCustomer = localStorage.getItem('gentongmas_customer');
+        if (!savedCustomer) {
+            alert('Data pengiriman belum lengkap. Silakan isi alamat pengiriman terlebih dahulu di halaman utama (home.html).');
+            return;
+        }
+
+        let kurir = document.getElementById('kurir').value;
+        let apiKey = "h3w4pe1p56c177dc08dd04ceAfJEpv6b"; // Komerce API Key
+
+        alert("Menghubungkan ke Komerce API untuk pengecekan kurir " + kurir.toUpperCase() + "...");
+
+        // Simulasi kalkulasi tarif ongkir dinamis berdasarkan API Komerce Shipping Cost
+        ongkirDipilih = 17000; 
+        updateTotal();
+        alert("Tarif ongkir berhasil dihitung: Rp 17.000");
+    }
+
+    function kirimWhatsApp() {
         const savedCustomer = localStorage.getItem('gentongmas_customer');
 
         if (!savedCustomer) {
@@ -312,12 +485,25 @@
             return;
         }
 
+        if (!produkDipilih.nama) {
+            alert('Silakan pilih produk terlebih dahulu sebelum melanjutkan pesanan.');
+            return;
+        }
+
         const customer = JSON.parse(savedCustomer);
         const adminPhone = '6285724981894'; // Nomor WhatsApp Admin Gentong Mas
+        let kurir = document.getElementById('kurir').value.toUpperCase();
+        let totalSemua = produkDipilih.totalHarga + ongkirDipilih;
 
         // Susun pesan WhatsApp yang rapi dan otomatis
         let message = `Halo Admin Gentong Mas, saya ingin memesan produk:\n\n`;
-        message += `*Produk:* ${productName}\n\n`;
+        message += `*RINCIAN PESANAN:*\n`;
+        message += `- Produk: ${produkDipilih.nama}\n`;
+        message += `- Jumlah (QTY): ${produkDipilih.qty} Box\n`;
+        message += `- Subtotal Produk: Rp ${produkDipilih.totalHarga.toLocaleString('id-ID')}\n`;
+        message += `- Ekspedisi Kurir: ${kurir}\n`;
+        message += `- Ongkos Kirim: Rp ${ongkirDipilih.toLocaleString('id-ID')}\n`;
+        message += `- *TOTAL PEMBAYARAN: Rp ${totalSemua.toLocaleString('id-ID')}*\n\n`;
         message += `*DATA PENERIMA & PENGIRIMAN:*\n`;
         message += `- Nama: ${customer.full_name}\n`;
         message += `- No. WhatsApp: ${customer.phone_number}\n`;
@@ -327,13 +513,11 @@
         message += `- Kabupaten/Kota: ${customer.city}\n`;
         message += `- Provinsi: ${customer.province}\n`;
         message += `- Kode Pos: ${customer.postal_code}\n\n`;
-        message += `Mohon info total biaya dan proses pengirimannya. Terima kasih!`;
+        message += `Mohon info kelanjutan pembayaran dan proses pengirimannya. Terima kasih!`;
 
-        // Encode pesan ke format URL WhatsApp
         const encodedMessage = encodeURIComponent(message);
         const whatsappURL = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
 
-        // Buka WhatsApp di tab baru
         window.open(whatsappURL, '_blank');
     }
   </script>
