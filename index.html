@@ -174,6 +174,18 @@
             });
     });
 
+    // Tangkap nomor telepon jika pelanggan ingin mengubah alamat dari halaman produk
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedPhone = localStorage.getItem('gentongmas_edit_phone');
+        if (savedPhone) {
+            phoneInput.value = savedPhone;
+            // Memicu event blur agar otomatis melacak data lama di database jika diperlukan
+            phoneInput.dispatchEvent(new Event('blur'));
+            // Bersihkan cache sementara
+            localStorage.removeItem('gentongmas_edit_phone');
+        }
+    });
+
     // FITUR REPEAT ORDER: JIKA PELANGGAN LAMA KLIK OK, LANGSUNG KE HALAMAN PRODUK
     phoneInput.addEventListener('blur', async function() {
         const phone = phoneInput.value.trim();
@@ -204,7 +216,7 @@
         }
     });
 
-    // Submit ke Supabase (Untuk pelanggan baru / yang memilih batal dan input manual)
+    // Submit ke Supabase (Untuk pelanggan baru / yang memilih batal dan input manual / mengubah alamat)
     document.getElementById('customerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
