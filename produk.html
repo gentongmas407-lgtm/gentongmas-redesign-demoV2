@@ -365,8 +365,13 @@
               <span id="lbl-total">Rp 0</span>
             </div>
 
-            <button onclick="kirimWhatsApp()" class="btn btn-primary" style="width: 100%; background-color: #16a34a; text-align: center; padding: 10px; font-size: 0.95rem;">
+            <button onclick="kirimWhatsApp()" class="btn btn-primary" style="width: 100%; background-color: #16a34a; text-align: center; padding: 10px; font-size: 0.95rem; margin-bottom: 8px;">
               <i class="fa-brands fa-whatsapp"></i> Pesan & Kirim ke WhatsApp
+            </button>
+
+            <!-- Tombol Tambahan: Ingin Ubah Alamat Pengiriman -->
+            <button onclick="ubahAlamatBaru()" class="btn btn-outline-secondary" style="width: 100%; font-size: 0.85rem; padding: 6px; border: 1px solid #d1d5db; color: #4b5563; background: #f9fafb; cursor: pointer; border-radius: 6px;">
+              <i class="fa-solid fa-pen-to-square"></i> Ingin Ubah Alamat Pengiriman?
             </button>
           </div>
         </div>
@@ -464,7 +469,7 @@
 
         const savedCustomer = localStorage.getItem('gentongmas_customer');
         if (!savedCustomer) {
-            alert('Data pengiriman belum lengkap. Silakan isi alamat pengiriman terlebih dahulu di halaman utama (home.html).');
+            alert('Data pengiriman belum lengkap. Silakan isi alamat pengiriman terlebih dahulu di halaman utama (home.html atau index.html).');
             return;
         }
 
@@ -484,7 +489,7 @@
 
         if (!savedCustomer) {
             alert('Silakan isi data pengiriman terlebih dahulu di halaman utama.');
-            window.location.href = 'home.html';
+            window.location.href = 'index.html';
             return;
         }
 
@@ -522,6 +527,18 @@
         const whatsappURL = `https://wa.me/${adminPhone}?text=${encodedMessage}`;
 
         window.open(whatsappURL, '_blank');
+    }
+
+    // Fungsi untuk mengubah alamat dengan nomor WhatsApp yang sama
+    function ubahAlamatBaru() {
+        const savedCustomer = localStorage.getItem('gentongmas_customer');
+        if (savedCustomer) {
+            const customer = JSON.parse(savedCustomer);
+            // Simpan nomor WhatsApp sementara agar otomatis terisi di form utama
+            localStorage.setItem('gentongmas_edit_phone', customer.phone_number);
+        }
+        // Arahkan kembali ke halaman form utama (index.html)
+        window.location.href = 'index.html';
     }
   </script>
 
